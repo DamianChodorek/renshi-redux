@@ -1,0 +1,3 @@
+package com.damianchodorek.renshi.plugin.fragment
+
+interface DialogFragmentPlugin
