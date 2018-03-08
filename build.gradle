@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlin_version = '1.2.21'
+        kotlin_version = '1.2.30'
         version_name = '0.9'
         version_code = 1
         target_version = 27
