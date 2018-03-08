@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion target_version
@@ -36,7 +37,7 @@ dependencies {
     implementation project(':renshi-core')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:support-annotations:$support_version"
-    compile "com.pascalwelsch.compositeandroid:fragment:$composite_android_version"
+    implementation "com.pascalwelsch.compositeandroid:fragment:$composite_android_version"
 
     androidTestImplementation("com.android.support.test.espresso:espresso-core:$espresso_version")
     androidTestImplementation("com.android.support.test:runner:$test_runner_version")
