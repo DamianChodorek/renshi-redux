@@ -21,7 +21,8 @@ internal class BaseActivityPluginTest : BasePluginTest() {
     @InjectMocks
     private var plugin = object : BaseActivityPlugin(
             activityMock,
-            pluginDelegateBuilderMock
+            pluginDelegateBuilderMock,
+            { context -> viewModelCacheProviderMock.provide(context) }
     ) {
         override fun createController() = controllerMock
     }

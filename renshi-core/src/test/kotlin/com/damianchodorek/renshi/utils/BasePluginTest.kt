@@ -10,14 +10,12 @@ import com.nhaarman.mockito_kotlin.argumentCaptor
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Before
-import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
 abstract class BasePluginTest {
 
     protected val builderCaptor = PluginDelegateBuilderCaptors()
-    @Mock
-    protected lateinit var viewModelCacheProviderMock: ViewModelCacheProvider
+    protected val viewModelCacheProviderMock = mock< ViewModelCacheProvider>()
     protected val pluginDelegateBuilderMock = mock<PluginDelegateBuilder>()
     protected val pluginDelegaterMock = mock<PluginDelegate>()
     protected val controllerMock = mock<Controller>()
