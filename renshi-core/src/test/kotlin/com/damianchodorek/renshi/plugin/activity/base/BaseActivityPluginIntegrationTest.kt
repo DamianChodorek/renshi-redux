@@ -55,11 +55,11 @@ internal class BaseActivityPluginIntegrationTest {
 }
 
 private data class TestState(
-        override val lastActionRenderMark: Any? = null
+        override val lastActionMark: Any? = null
 ) : State {
 
     override fun clone(lastActionRenderMark: Any?) =
-            copy(lastActionRenderMark = lastActionRenderMark)
+            copy(lastActionMark = lastActionRenderMark)
 }
 
 private class TestStore : BaseStore<TestState>() {

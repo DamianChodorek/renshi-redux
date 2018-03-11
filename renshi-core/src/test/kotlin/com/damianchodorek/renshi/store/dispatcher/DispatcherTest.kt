@@ -75,7 +75,7 @@ class DispatcherTest {
 
         store.dispatch(actionMock).test()
 
-        MatcherAssert.assertThat(store.state.lastActionRenderMark!!, Matchers.equalTo(renderMarkMock))
+        MatcherAssert.assertThat(store.state.lastActionMark!!, Matchers.equalTo(renderMarkMock))
     }
 
     private fun prepareActionToReturnRenderMark(renderMar: Any) {
@@ -90,14 +90,14 @@ class DispatcherTest {
         whenever(actionMock.renderMark).thenReturn(null)
         store.dispatch(actionMock).test()
 
-        Assert.assertNull(store.state.lastActionRenderMark)
+        Assert.assertNull(store.state.lastActionMark)
     }
 
     @Test
     fun dispatch_updatesState() {
         val renderMarkMock = mock<Any>()
         prepareActionToReturnRenderMark(renderMarkMock)
-        val stateMock = TestState(lastActionRenderMark = renderMarkMock)
+        val stateMock = TestState(lastActionMark = renderMarkMock)
         prepareReducerToEmitState(stateMock)
 
         val store = createTestStore()
@@ -117,7 +117,7 @@ class DispatcherTest {
 
         val expectedStates = prepareListOfStates(
                 store.state.copy(),
-                store.state.copy(lastActionRenderMark = renderMarkMock),
+                store.state.copy(lastActionMark = renderMarkMock),
                 store.state.copy())
         testSubscriber.assertValueSequence(expectedStates)
     }
@@ -180,7 +180,7 @@ class DispatcherTest {
     }
 }
 
-private data class TestState(override val lastActionRenderMark: Any? = null) : State {
+private data class TestState(override val lastActionMark: Any? = null) : State {
 
-    override fun clone(lastActionRenderMark: Any?) = copy(lastActionRenderMark = lastActionRenderMark)
+    override fun clone(lastActionRenderMark: Any?) = copy(lastActionMark = lastActionRenderMark)
 }

@@ -72,9 +72,9 @@ class CompositeReducerTest {
 private class TestAction : BaseAction()
 
 private data class TestState(
-        override val lastActionRenderMark: Any? = null,
+        override val lastActionMark: Any? = null,
         val message: String
 ) : State {
 
-    override fun clone(lastActionRenderMark: Any?) = copy(lastActionRenderMark = lastActionRenderMark)
+    override fun clone(lastActionRenderMark: Any?) = copy(lastActionMark = lastActionRenderMark)
 }

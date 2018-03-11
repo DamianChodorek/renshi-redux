@@ -54,7 +54,7 @@ class BaseStoreTest {
 
         testObserver.assertValueSequence(listOf(
                 initialStateMock,
-                TestStateImpl().copy(lastActionRenderMark = renderMark)
+                TestStateImpl().copy(lastActionMark = renderMark)
         ))
     }
 
