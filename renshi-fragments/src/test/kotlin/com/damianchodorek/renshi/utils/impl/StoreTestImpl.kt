@@ -5,8 +5,8 @@ import com.damianchodorek.renshi.store.base.BaseStore
 import com.damianchodorek.renshi.store.reducer.Reducer
 import com.nhaarman.mockito_kotlin.mock
 
-class TestStoreImpl : BaseStore<TestStateImpl>() {
+class StoreTestImpl : BaseStore<StateTestImpl>() {
 
-    override val initialState = TestStateImpl()
-    override val stateReducer = mock<Reducer<Action, TestStateImpl>>()
+    override val initialState = StateTestImpl()
+    override val stateReducer = mock<Reducer<Action, StateTestImpl>>()
 }

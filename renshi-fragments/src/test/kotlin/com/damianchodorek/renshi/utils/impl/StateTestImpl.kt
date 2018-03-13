@@ -2,7 +2,7 @@ package com.damianchodorek.renshi.utils.impl
 
 import com.damianchodorek.renshi.store.state.State
 
-data class TestStateImpl(
+data class StateTestImpl(
         override val lastActionMark: Any? = null
 ) : State {
 
