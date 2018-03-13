@@ -1,9 +1,13 @@
 package com.damianchodorek.renshiredux
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import com.damianchodorek.renshi.store.Store
+import com.damianchodorek.renshi.storeowner.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
+    override val store: Store<*>
+        get() = throw NotImplementedError()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
