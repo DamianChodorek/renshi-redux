@@ -10,7 +10,7 @@ class BaseActionTest {
     @Test
     fun renderMark_returnsNullAsDefault() {
         val action = object : BaseAction() {}
-        assertNull(action.renderMark)
+        assertNull(action.actionMark)
     }
 
     @Suppress("UnnecessaryVariable")
@@ -19,10 +19,10 @@ class BaseActionTest {
         val mark = "random object"
 
         val action = object : BaseAction() {
-            override val renderMark = mark
+            override val actionMark = mark
         }
 
-        assertThat(action.renderMark, equalTo(mark))
+        assertThat(action.actionMark, equalTo(mark))
     }
 
     @Test

@@ -23,7 +23,7 @@ interface Dispatcher<in ACTION : Action> {
                     override fun dispatch(action: ACTION) =
                             reducer
                                     .reduce(action, stateContainer.state)
-                                    .map { it.clone(lastActionRenderMark = action.renderMark) }
+                                    .map { it.clone(lastActionRenderMark = action.actionMark) }
                                     .doOnSuccess { stateContainer.state = it as STATE }
                                     .filter { action.singleTime }
                                     .flatMapCompletable {

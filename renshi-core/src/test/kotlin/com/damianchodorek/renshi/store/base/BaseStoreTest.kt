@@ -3,7 +3,7 @@ package com.damianchodorek.renshi.store.base
 import com.damianchodorek.renshi.action.Action
 import com.damianchodorek.renshi.store.reducer.Reducer
 import com.damianchodorek.renshi.utils.RxTestRule
-import com.damianchodorek.renshi.utils.impl.TestStateImpl
+import com.damianchodorek.renshi.utils.impl.StateTestImpl
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
@@ -18,9 +18,9 @@ class BaseStoreTest {
     @get:Rule
     val rxRule = RxTestRule()
 
-    private val initialStateMock = TestStateImpl()
-    private val reducerMock = mock<Reducer<Action, TestStateImpl>>()
-    private val store = object : BaseStore<TestStateImpl>() {
+    private val initialStateMock = StateTestImpl()
+    private val reducerMock = mock<Reducer<Action, StateTestImpl>>()
+    private val store = object : BaseStore<StateTestImpl>() {
 
         override val initialState = initialStateMock
         override val stateReducer = reducerMock
@@ -45,7 +45,7 @@ class BaseStoreTest {
     fun dispatch_callsReducerAndEmitsNewValue() {
         val renderMark = Any()
         val actionMock = mock<Action>().apply {
-            whenever(this.renderMark).thenReturn(renderMark)
+            whenever(this.actionMark).thenReturn(renderMark)
         }
         mockReducerResponse(actionMock)
 
@@ -54,7 +54,7 @@ class BaseStoreTest {
 
         testObserver.assertValueSequence(listOf(
                 initialStateMock,
-                TestStateImpl().copy(lastActionMark = renderMark)
+                StateTestImpl().copy(lastActionMark = renderMark)
         ))
     }
 

@@ -2,7 +2,7 @@ package com.damianchodorek.renshi.storeowner
 
 import com.damianchodorek.renshi.plugin.activity.ActivityPlugin
 import com.damianchodorek.renshi.plugin.activity.base.BaseActivityPlugin
-import com.damianchodorek.renshi.utils.impl.TestStoreImpl
+import com.damianchodorek.renshi.utils.impl.StoreTestImpl
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.verify
@@ -29,5 +29,5 @@ class BaseActivityTest {
 
 private class TestActivity : BaseActivity() {
 
-    override val store = TestStoreImpl()
+    override val store = StoreTestImpl()
 }

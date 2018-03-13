@@ -1,5 +1,6 @@
 package com.damianchodorek.renshi.controller.base
 
+import android.support.annotation.CallSuper
 import com.damianchodorek.renshi.controller.Controller
 import com.damianchodorek.renshi.store.Store
 import com.damianchodorek.renshi.store.state.State
@@ -8,17 +9,18 @@ import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
 
 @Suppress("UNCHECKED_CAST", "RedundantUnitReturnType")
-abstract class BaseController<VIEW, STATE : State> : Controller {
+abstract class BaseController<PLUGIN, STATE : State> : Controller {
 
     private val detachDisposable = CompositeDisposable()
     private val destroyDisposable = CompositeDisposable()
 
     protected lateinit var store: Store<STATE>
 
-    private var pluginWeakRef: WeakReference<VIEW>? = null
-    protected var plugin: VIEW? = null
+    private var pluginWeakRef: WeakReference<PLUGIN>? = null
+    protected var plugin: PLUGIN? = null
         get() = pluginWeakRef?.get()
 
+    @CallSuper
     override fun onDetachPlugin(): Unit {
         detachDisposable.clear()
         pluginWeakRef = null
@@ -41,6 +43,6 @@ abstract class BaseController<VIEW, STATE : State> : Controller {
     }
 
     override fun setPluginRef(plugin: Any): Unit {
-        this.pluginWeakRef = WeakReference(plugin as VIEW)
+        this.pluginWeakRef = WeakReference(plugin as PLUGIN)
     }
 }

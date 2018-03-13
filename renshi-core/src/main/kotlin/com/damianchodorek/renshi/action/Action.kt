@@ -2,6 +2,6 @@ package com.damianchodorek.renshi.action
 
 interface Action {
 
-    val renderMark: Any?
+    val actionMark: Any?
     val singleTime: Boolean
 }

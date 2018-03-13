@@ -79,7 +79,7 @@ class DispatcherTest {
     }
 
     private fun prepareActionToReturnRenderMark(renderMar: Any) {
-        whenever(actionMock.renderMark).thenReturn(renderMar)
+        whenever(actionMock.actionMark).thenReturn(renderMar)
     }
 
     @Test
@@ -87,7 +87,7 @@ class DispatcherTest {
         prepareActionToReturnRenderMark(mock())
         store.dispatch(actionMock).test()
 
-        whenever(actionMock.renderMark).thenReturn(null)
+        whenever(actionMock.actionMark).thenReturn(null)
         store.dispatch(actionMock).test()
 
         Assert.assertNull(store.state.lastActionMark)
@@ -169,7 +169,7 @@ class DispatcherTest {
             : List<Action> {
 
         fun List<Action>.switchRenderMarskToMocks(mocks: List<Any>) =
-                zip(mocks).forEach { whenever(it.first.renderMark).thenReturn(it.second) }
+                zip(mocks).forEach { whenever(it.first.actionMark).thenReturn(it.second) }
 
         return mutableListOf<Action>()
                 .apply {

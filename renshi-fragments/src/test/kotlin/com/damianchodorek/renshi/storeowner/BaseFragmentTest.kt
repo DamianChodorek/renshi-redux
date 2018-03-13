@@ -2,7 +2,7 @@ package com.damianchodorek.renshi.storeowner
 
 import com.damianchodorek.renshi.plugin.dialogfragment.FragmentPlugin
 import com.damianchodorek.renshi.plugin.fragment.base.BaseFragmentPlugin
-import com.damianchodorek.renshi.utils.impl.TestStoreImpl
+import com.damianchodorek.renshi.utils.impl.StoreTestImpl
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.verify
@@ -30,5 +30,5 @@ class BaseFragmentTest {
 
 private class TestFragment : BaseFragment() {
 
-    override val store = TestStoreImpl()
+    override val store = StoreTestImpl()
 }
