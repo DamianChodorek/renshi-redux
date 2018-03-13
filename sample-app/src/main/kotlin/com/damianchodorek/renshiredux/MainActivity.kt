@@ -1,16 +1,19 @@
 package com.damianchodorek.renshiredux
 
-import android.os.Bundle
-import com.damianchodorek.renshi.store.Store
 import com.damianchodorek.renshi.storeowner.BaseActivity
+import com.damianchodorek.renshiredux.Contract.Plugin.*
+import com.damianchodorek.renshiredux.plugin.InitializingPluginImpl
+import com.damianchodorek.renshiredux.plugin.MakeApiCallButtonPluginImpl
+import com.damianchodorek.renshiredux.plugin.RenderingPluginImpl
+import com.damianchodorek.renshiredux.store.MainActivityStore
 
 class MainActivity : BaseActivity() {
 
-    override val store: Store<*>
-        get() = throw NotImplementedError()
+    override val store = MainActivityStore()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    init {
+        addPlugin(InitializingPluginImpl(this) as InitializingPlugin)
+        addPlugin(MakeApiCallButtonPluginImpl(this) as MakeApiCallButtonPlugin)
+        addPlugin(RenderingPluginImpl(this) as RenderingPlugin)
     }
 }

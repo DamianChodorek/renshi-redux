@@ -36,10 +36,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.google.dagger:dagger:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
 
     androidTestImplementation("com.android.support.test.espresso:espresso-core:$espresso_version")
     androidTestImplementation("com.android.support.test:runner:$test_runner_version")
 
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "com.nhaarman:mockito-kotlin:$kotlin_mockito_version"
+    testImplementation "org.hamcrest:hamcrest-library:$hamcrest_verson"
 }

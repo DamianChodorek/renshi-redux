@@ -1,0 +1,5 @@
+package com.damianchodorek.renshiredux.controller.interactor
+
+import com.damianchodorek.renshiredux.Contract.Interactor.MakeApiCallInteractor
+
+class MakeApiCallInteractorImpl : MakeApiCallInteractor
