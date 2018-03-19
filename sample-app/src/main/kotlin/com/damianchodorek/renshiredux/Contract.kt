@@ -1,6 +1,7 @@
 package com.damianchodorek.renshiredux
 
 import com.damianchodorek.renshi.plugin.activity.ActivityPlugin
+import io.reactivex.Completable
 import io.reactivex.Observable
 
 interface Contract {
@@ -21,6 +22,9 @@ interface Contract {
     }
 
     interface Interactor {
-        interface MakeApiCallInteractor
+
+        interface MakeApiCallInteractor {
+            fun makeFakeApiCall(): Completable
+        }
     }
 }
