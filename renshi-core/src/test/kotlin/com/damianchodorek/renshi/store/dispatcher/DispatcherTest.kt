@@ -160,7 +160,7 @@ class DispatcherTest {
                 .apply { add(store.state.copy()) }
                 .apply {
                     renderMarks.forEach {
-                        add(store.state.clone(lastActionRenderMark = it))
+                        add(store.state.clone(lastActionMark = it))
                     }
                 }
     }
@@ -182,5 +182,5 @@ class DispatcherTest {
 
 private data class TestState(override val lastActionMark: Any? = null) : State {
 
-    override fun clone(lastActionRenderMark: Any?) = copy(lastActionMark = lastActionRenderMark)
+    override fun clone(lastActionMark: Any?) = copy(lastActionMark = lastActionMark)
 }

@@ -12,7 +12,7 @@ class MakeApiCallButtonPluginImpl(
         activity: BaseActivity
 ) : BaseActivityPlugin(activity), MakeApiCallButtonPlugin {
 
-    override var makeApiCallClicks = PublishSubject.create<Unit>()
+    override var makeApiCallClicks = PublishSubject.create<Unit>()!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

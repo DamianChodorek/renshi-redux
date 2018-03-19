@@ -76,5 +76,5 @@ private data class TestState(
         val message: String
 ) : State {
 
-    override fun clone(lastActionRenderMark: Any?) = copy(lastActionMark = lastActionRenderMark)
+    override fun clone(lastActionMark: Any?) = copy(lastActionMark = lastActionMark)
 }

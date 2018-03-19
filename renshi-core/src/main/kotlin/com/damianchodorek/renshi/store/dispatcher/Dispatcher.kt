@@ -23,12 +23,12 @@ interface Dispatcher<in ACTION : Action> {
                     override fun dispatch(action: ACTION) =
                             reducer
                                     .reduce(action, stateContainer.state)
-                                    .map { it.clone(lastActionRenderMark = action.actionMark) }
+                                    .map { it.clone(lastActionMark = action.actionMark) }
                                     .doOnSuccess { stateContainer.state = it as STATE }
                                     .filter { action.singleTime }
                                     .flatMapCompletable {
                                         Completable.fromAction {
-                                            stateContainer.state = stateContainer.state.clone(lastActionRenderMark = null) as STATE
+                                            stateContainer.state = stateContainer.state.clone(lastActionMark = null) as STATE
                                         }
                                     }
                                     .subscribeOn(Schedulers.computation())

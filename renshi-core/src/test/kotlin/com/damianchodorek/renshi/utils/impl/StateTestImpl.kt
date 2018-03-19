@@ -6,5 +6,5 @@ data class StateTestImpl(
         override val lastActionMark: Any? = null
 ) : State {
 
-    override fun clone(lastActionRenderMark: Any?): State = copy(lastActionMark = lastActionRenderMark)
+    override fun clone(lastActionMark: Any?): State = copy(lastActionMark = lastActionMark)
 }
