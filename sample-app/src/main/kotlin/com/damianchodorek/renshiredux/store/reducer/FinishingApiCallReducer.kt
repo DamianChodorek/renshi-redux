@@ -7,7 +7,12 @@ import io.reactivex.Single
 
 class FinishingApiCallReducer : Reducer<FinishingApiCallAction, MainActivityState> {
 
-    override fun reduce(action: FinishingApiCallAction, state: MainActivityState): Single<MainActivityState> {
-        throw NotImplementedError()
-    }
+    override fun reduce(action: FinishingApiCallAction, state: MainActivityState) =
+            Single
+                    .just(state)
+                    .map {
+                        if (it.apiCallsCount > 0)
+                            it.copy(apiCallsCount = it.apiCallsCount - 1)
+                        else it
+                    }!!
 }

@@ -7,7 +7,8 @@ import io.reactivex.Single
 
 class MakingApiCallReducer : Reducer<MakingApiCallAction, MainActivityState> {
 
-    override fun reduce(action: MakingApiCallAction, state: MainActivityState): Single<MainActivityState> {
-        throw NotImplementedError()
-    }
+    override fun reduce(action: MakingApiCallAction, state: MainActivityState) =
+            Single
+                    .just(state)
+                    .map { it.copy(apiCallsCount = state.apiCallsCount + 1) }!!
 }
