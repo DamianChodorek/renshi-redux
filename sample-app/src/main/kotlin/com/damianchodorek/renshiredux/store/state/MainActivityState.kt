@@ -4,6 +4,7 @@ import com.damianchodorek.renshi.store.state.State
 
 data class MainActivityState(
         val apiCallsCount: Int = 0,
+        val loading: Boolean = false,
         override val lastActionMark: Any? = null
 ) : State {
 

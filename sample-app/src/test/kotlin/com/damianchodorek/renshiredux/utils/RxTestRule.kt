@@ -1,5 +1,6 @@
 package com.damianchodorek.renshiredux.utils
 
+import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.rules.TestRule
@@ -16,11 +17,14 @@ class RxTestRule : TestRule {
                     RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
                     RxJavaPlugins.setNewThreadSchedulerHandler { Schedulers.trampoline() }
                     RxJavaPlugins.setSingleSchedulerHandler { Schedulers.trampoline() }
+                    RxAndroidPlugins.setMainThreadSchedulerHandler { Schedulers.trampoline() }
+                    RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
 
                     try {
                         base!!.evaluate()
                     } finally {
                         RxJavaPlugins.reset()
+                        RxAndroidPlugins.reset()
                     }
                 }
             }

@@ -13,12 +13,16 @@ interface Contract {
             val makeApiCallClicks: Observable<Unit>
         }
 
-        interface RenderingPlugin : ActivityPlugin
+        interface PresentationPlugin : ActivityPlugin {
+            fun hideButton()
+            fun showButton()
+            fun hideLoading()
+            fun showLoading()
+        }
     }
 
     interface Controller {
         interface MakeApiCallController : Controller
-        interface RenderingController : Controller
     }
 
     interface Interactor {
@@ -26,5 +30,9 @@ interface Contract {
         interface MakeApiCallInteractor {
             fun makeFakeApiCall(): Completable
         }
+    }
+
+    interface Presenter {
+        interface MainPresenter : Controller
     }
 }
