@@ -2,7 +2,6 @@ package com.damianchodorek.renshiredux.store.reducer
 
 import com.damianchodorek.renshiredux.action.MakingApiCallAction
 import com.damianchodorek.renshiredux.store.MainActivityStore
-import com.damianchodorek.renshiredux.store.state.MainActivityState
 import com.damianchodorek.renshiredux.utils.RxTestRule
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
@@ -17,22 +16,27 @@ class MakingApiCallReducerIntegrationTest {
     private val store = MainActivityStore()
 
     @Test
-    fun dispatch_incrementsStateApiCallsCounter() {
+    fun dispatch_incrementsApiCallsCounter() {
         dispatchAction()
-        assertThat(store.state, equalTo(MainActivityState(apiCallsCount = 1)))
+        assertThat(store.state.apiCallsCount, equalTo(1))
     }
 
     private fun dispatchAction() = store.dispatch(MakingApiCallAction()).subscribe()
 
     @Test
-    fun dispatch_incrementsStateApiCallsCounter_whenCalledManyTimes() {
+    fun dispatch_setsLoadingToTrue() {
+        dispatchAction()
+        assertThat(store.state.loading, equalTo(true))
+    }
+
+    @Test
+    fun dispatch_incrementsApiCallsCounterAgain_whenCalledManyTimes() {
         val expectedApiCallsCount = 10
 
         repeat(expectedApiCallsCount) {
             dispatchAction()
         }
 
-        val expectedState = MainActivityState(apiCallsCount = expectedApiCallsCount)
-        assertThat(store.state, equalTo(expectedState))
+        assertThat(store.state.apiCallsCount, equalTo(expectedApiCallsCount))
     }
 }

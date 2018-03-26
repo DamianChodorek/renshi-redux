@@ -12,7 +12,14 @@ class FinishingApiCallReducer : Reducer<FinishingApiCallAction, MainActivityStat
                     .just(state)
                     .map {
                         if (it.apiCallsCount > 0)
-                            it.copy(apiCallsCount = it.apiCallsCount - 1)
+                            it.copy(
+                                    apiCallsCount = it.apiCallsCount - 1,
+                                    loading = it.calculateNewLoadingVal()
+                            )
                         else it
                     }!!
+
+    private fun MainActivityState.calculateNewLoadingVal() =
+            if (apiCallsCount == 1) false
+            else loading
 }

@@ -24,13 +24,13 @@ class FinishingApiCallReducerIntegrationTest {
     }
 
     @Test
-    fun dispatch_decrementsStateApiCallsCounter() {
+    fun dispatch_decrementsApiCallsCounter() {
         dispatchIncrementingAction()
         dispatchIncrementingAction()
 
         dispatchDecrementingAction()
 
-        assertThat(store.state, equalTo(MainActivityState(apiCallsCount = 1)))
+        assertThat(store.state.apiCallsCount, equalTo(1))
     }
 
     private fun dispatchIncrementingAction() = store.dispatch(MakingApiCallAction()).subscribe()
@@ -38,7 +38,7 @@ class FinishingApiCallReducerIntegrationTest {
     private fun dispatchDecrementingAction() = store.dispatch(FinishingApiCallAction()).subscribe()
 
     @Test
-    fun dispatch_incrementsStateApiCallsCounter_whenCalledManyTimes() {
+    fun dispatch_decrementsApiCallsCounter_whenCalledManyTimes() {
         val expectedApiCallsCount = 5
 
         repeat(expectedApiCallsCount * 2) {
@@ -49,7 +49,15 @@ class FinishingApiCallReducerIntegrationTest {
             dispatchDecrementingAction()
         }
 
-        val expectedState = MainActivityState(apiCallsCount = expectedApiCallsCount)
-        assertThat(store.state, equalTo(expectedState))
+        assertThat(store.state.apiCallsCount, equalTo(expectedApiCallsCount))
+    }
+
+    @Test
+    fun dispatch_setsLoadingToFalse_whenCounterIsZero() {
+        dispatchIncrementingAction()
+
+        dispatchDecrementingAction()
+
+        assertThat(store.state.loading, equalTo(false))
     }
 }
