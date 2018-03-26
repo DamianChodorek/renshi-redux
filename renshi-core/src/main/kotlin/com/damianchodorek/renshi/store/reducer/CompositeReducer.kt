@@ -1,12 +1,11 @@
 package com.damianchodorek.renshi.store.reducer
 
 import com.damianchodorek.renshi.action.Action
-import com.damianchodorek.renshi.store.state.State
 import io.reactivex.Single
 import kotlin.reflect.KClass
 
 @Suppress("UNCHECKED_CAST")
-open class CompositeReducer<STATE : State> : Reducer<Action, STATE> {
+open class CompositeReducer<STATE> : Reducer<Action, STATE> {
 
     private val reducers = mutableMapOf<KClass<*>, Reducer<*, STATE>>()
 
