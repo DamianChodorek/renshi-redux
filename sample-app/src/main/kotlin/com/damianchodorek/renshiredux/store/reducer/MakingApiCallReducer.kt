@@ -32,5 +32,5 @@ private class ApiCallsCountSliceReducer : Reducer<MakingApiCallAction, Int> {
 
 private class LoadingSliceReducer : Reducer<MakingApiCallAction, Boolean> {
 
-    override fun reduce(action: MakingApiCallAction, state: Boolean) = Single.just(true)
+    override fun reduce(action: MakingApiCallAction, state: Boolean) = Single.just(true)!!
 }
