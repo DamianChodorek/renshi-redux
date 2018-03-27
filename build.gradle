@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlin_version = '1.2.30'
+        kotlin_version = '1.2.31'
         version_name = '0.9'
         version_code = 1
         target_version = 27
@@ -16,7 +16,7 @@ buildscript {
         rx_android_version = '2.0.2'
         rx_kotlin_version = '2.2.0'
         constraint_layout_version = '1.0.2'
-        arch_components_version = '1.1.0'
+        arch_components_version = '1.1.1'
 
         espresso_version = '3.0.1'
         test_runner_version = '1.0.1'
