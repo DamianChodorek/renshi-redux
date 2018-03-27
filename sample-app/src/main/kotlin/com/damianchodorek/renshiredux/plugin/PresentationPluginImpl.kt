@@ -1,31 +1,32 @@
 package com.damianchodorek.renshiredux.plugin
 
-import com.damianchodorek.renshi.controller.Controller
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import com.damianchodorek.renshi.plugin.activity.base.BaseActivityPlugin
 import com.damianchodorek.renshi.storeowner.BaseActivity
 import com.damianchodorek.renshiredux.Contract.Plugin.PresentationPlugin
+import com.damianchodorek.renshiredux.presenter.MainPresenterImpl
+import kotlinx.android.synthetic.main.activity_main.*
 
 class PresentationPluginImpl(
         activity: BaseActivity
 ) : BaseActivityPlugin(activity), PresentationPlugin {
 
-    override fun createController(): Controller? {
-        throw NotImplementedError()
-    }
-
     override fun hideButton() {
-        throw NotImplementedError()
+        activity.makeApiCallBtn.visibility = GONE
     }
 
     override fun showButton() {
-        throw NotImplementedError()
+        activity.makeApiCallBtn.visibility = VISIBLE
     }
 
     override fun hideLoading() {
-        throw NotImplementedError()
+        activity.apiCallProgressBar.visibility = GONE
     }
 
     override fun showLoading() {
-        throw NotImplementedError()
+        activity.apiCallProgressBar.visibility = VISIBLE
     }
+
+    override fun createController() = MainPresenterImpl()
 }

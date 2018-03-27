@@ -7,21 +7,19 @@ import com.damianchodorek.renshiredux.store.state.MainActivityState
 import com.damianchodorek.renshiredux.utils.RxTestRule
 import com.nhaarman.mockito_kotlin.*
 import io.reactivex.Completable
-import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.processors.PublishProcessor
-import io.reactivex.schedulers.Schedulers
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 class MainPresenterImplTest {
 
-    //TODO Fix test rule
     @Suppress("unused")
     @get:Rule
     val rxRule = RxTestRule()
+
     private val pluginMock = mock<PresentationPlugin>()
     private val stateChanges = PublishProcessor.create<MainActivityState>()
     private val storeMock = mock<Store<MainActivityState>>().apply {
@@ -30,16 +28,13 @@ class MainPresenterImplTest {
     }
     private val logMock = mock<(Throwable) -> Unit>()
     private val presenter = MainPresenterImpl(logMock).apply {
-        RxJavaPlugins.setComputationSchedulerHandler { Schedulers.trampoline() }
-        RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
-        RxJavaPlugins.setNewThreadSchedulerHandler { Schedulers.trampoline() }
-        RxJavaPlugins.setSingleSchedulerHandler { Schedulers.trampoline() }
-        RxAndroidPlugins.setMainThreadSchedulerHandler { Schedulers.trampoline() }
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
-
         setStoreRef(storeMock)
         setPluginRef(pluginMock)
-        onAttachPlugin()
+    }
+
+    @Before
+    fun setUp() {
+        presenter.onAttachPlugin()
     }
 
     @Test
