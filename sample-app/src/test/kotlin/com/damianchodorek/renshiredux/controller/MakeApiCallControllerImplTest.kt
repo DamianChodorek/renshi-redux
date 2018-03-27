@@ -9,6 +9,7 @@ import com.damianchodorek.renshiredux.store.MainActivityStore
 import com.damianchodorek.renshiredux.utils.RxTestRule
 import com.nhaarman.mockito_kotlin.*
 import io.reactivex.Completable
+import io.reactivex.subjects.CompletableSubject
 import io.reactivex.subjects.PublishSubject
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
@@ -28,8 +29,9 @@ class MakeApiCallControllerImplTest {
     private val storeMock = mock<Store<*>>().apply {
         whenever(dispatch(any())).thenReturn(Completable.complete())
     }
+    private val apiCallSubject = CompletableSubject.create()
     private val interactorMock = mock<MakeApiCallInteractor>().apply {
-        whenever(makeFakeApiCall()).thenReturn(Completable.complete())
+        whenever(makeFakeApiCall()).thenReturn(apiCallSubject)
     }
     private val logMock = mock<(Throwable) -> Unit>()
     private val controller = MakeApiCallControllerImpl(
@@ -71,8 +73,8 @@ class MakeApiCallControllerImplTest {
     }
 
     @Test
-    fun onAttachPlugin_disposesClicksStream_onDestroy() {
-        controller.onDestroy()
+    fun onAttachPlugin_disposesClicksStream_onDetach() {
+        controller.onDetachPlugin()
         assertThat(clicks.hasObservers(), equalTo(false))
     }
 
@@ -103,7 +105,25 @@ class MakeApiCallControllerImplTest {
     @Test
     fun makeApiCallClicks_makesApiCall() {
         emitClick()
-        verify(interactorMock).makeFakeApiCall()
+        assertThat(apiCallSubject.hasObservers(), equalTo(true))
+    }
+
+    @Test
+    fun onAttachPlugin_doesNotDisposeApiStreamOnDetach_whenClicked() {
+        emitClick()
+
+        controller.onDetachPlugin()
+
+        assertThat(apiCallSubject.hasObservers(), equalTo(true))
+    }
+
+    @Test
+    fun onAttachPlugin_disposesApiStreamOnDestroy_whenClicked() {
+        emitClick()
+
+        controller.onDestroy()
+
+        assertThat(apiCallSubject.hasObservers(), equalTo(false))
     }
 
     @Test
@@ -125,11 +145,20 @@ class MakeApiCallControllerImplTest {
     }
 
     @Test
-    fun makeApiCallClicks_logsError_whenErrorOccurs() {
+    fun makeApiCallClicks_logsError_whenErrorOccursDuringApiCall() {
         val runtimeException = RuntimeException()
-        whenever(interactorMock.makeFakeApiCall()).thenThrow(runtimeException)
+        whenever(interactorMock.makeFakeApiCall()).thenReturn(Completable.error(runtimeException))
 
         emitClick()
+
+        verify(logMock).invoke(runtimeException)
+    }
+
+    @Test
+    fun makeApiCallClicks_logsError_whenErrorOccursDuringClick() {
+        val runtimeException = RuntimeException()
+
+        clicks.onError(runtimeException)
 
         verify(logMock).invoke(runtimeException)
     }

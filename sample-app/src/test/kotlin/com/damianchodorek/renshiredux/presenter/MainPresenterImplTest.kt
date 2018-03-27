@@ -155,4 +155,13 @@ class MainPresenterImplTest {
 
         verify(pluginMock).hideLoading()
     }
+
+    @Test
+    fun stateChanges_hidesLoadingAgain_whenStateChangedAgain() {
+        emitStateChangedToNotLoading()
+
+        emitStateChangedToNotLoading()
+
+        verify(pluginMock, times(2)).hideLoading()
+    }
 }

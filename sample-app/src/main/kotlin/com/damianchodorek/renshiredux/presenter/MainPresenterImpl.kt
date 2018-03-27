@@ -17,7 +17,7 @@ class MainPresenterImpl(
                 store
                         .stateChanges
                         .map { it.loading }
-                        .distinct()
+                        .distinctUntilChanged()
                         .subscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy(
