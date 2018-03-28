@@ -3,12 +3,13 @@ package com.damianchodorek.renshiredux.plugin
 import android.view.View
 import android.widget.Button
 import com.damianchodorek.renshi.storeowner.BaseActivity
+import com.damianchodorek.renshi.storeowner.BaseFragment
 import com.damianchodorek.renshiredux.controller.MakeApiCallControllerImpl
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
-import com.pascalwelsch.compositeandroid.activity.ActivityDelegate
+import com.pascalwelsch.compositeandroid.fragment.FragmentDelegate
 import kotlinx.android.synthetic.main.activity_main.*
 import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.MatcherAssert.assertThat
@@ -20,8 +21,11 @@ class MakeApiCallButtonPluginImplTest {
     private val activityMock = mock<BaseActivity>().apply {
         whenever(makeApiCallBtn).thenReturn(button)
     }
-    private val plugin = MakeApiCallButtonPluginImpl(activityMock)
-    private val delegate = ActivityDelegate(activityMock).apply {
+    private val fragmentMock = mock<BaseFragment>().apply {
+        whenever(activity).thenReturn(activityMock)
+    }
+    private val plugin = MakeApiCallButtonPluginImpl(fragmentMock)
+    private val delegate = FragmentDelegate(fragmentMock).apply {
         addPlugin(plugin)
     }
 

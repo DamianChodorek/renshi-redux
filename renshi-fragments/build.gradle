@@ -31,8 +31,8 @@ android {
 }
 
 dependencies {
-    implementation "com.pascalwelsch.compositeandroid:fragment:$composite_android_version"
-    implementation project(':renshi-core')
+    api "com.pascalwelsch.compositeandroid:fragment:$composite_android_version"
+    api project(':renshi-core')
     implementation "com.android.support:support-annotations:$support_version"
 
     androidTestImplementation("com.android.support.test.espresso:espresso-core:$espresso_version")

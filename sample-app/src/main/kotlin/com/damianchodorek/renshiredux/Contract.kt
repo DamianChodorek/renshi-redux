@@ -1,6 +1,7 @@
 package com.damianchodorek.renshiredux
 
 import com.damianchodorek.renshi.plugin.activity.ActivityPlugin
+import com.damianchodorek.renshi.plugin.dialogfragment.FragmentPlugin
 import io.reactivex.Completable
 import io.reactivex.Observable
 
@@ -9,7 +10,7 @@ interface Contract {
     interface Plugin {
         interface InitializingPlugin : ActivityPlugin
 
-        interface MakeApiCallButtonPlugin : ActivityPlugin {
+        interface MakeApiCallButtonPlugin : FragmentPlugin {
             val makeApiCallClicks: Observable<Unit>
         }
 
