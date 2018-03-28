@@ -27,15 +27,10 @@ android {
 }
 
 dependencies {
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
-
     implementation project(':renshi-core')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:support-annotations:$support_version"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.google.dagger:dagger:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
     implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
     implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
