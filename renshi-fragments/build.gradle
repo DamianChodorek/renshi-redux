@@ -31,13 +31,9 @@ android {
 }
 
 dependencies {
-    annotationProcessor "android.arch.lifecycle:common-java8:$arch_components_version"
-    annotationProcessor "android.arch.lifecycle:compiler:$arch_components_version"
-
-    implementation project(':renshi-core')
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:support-annotations:$support_version"
     implementation "com.pascalwelsch.compositeandroid:fragment:$composite_android_version"
+    implementation project(':renshi-core')
+    implementation "com.android.support:support-annotations:$support_version"
 
     androidTestImplementation("com.android.support.test.espresso:espresso-core:$espresso_version")
     androidTestImplementation("com.android.support.test:runner:$test_runner_version")
