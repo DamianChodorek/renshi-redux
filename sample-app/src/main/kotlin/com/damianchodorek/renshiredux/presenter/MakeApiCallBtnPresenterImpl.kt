@@ -1,16 +1,16 @@
 package com.damianchodorek.renshiredux.presenter
 
 import com.damianchodorek.renshi.controller.base.BaseController
-import com.damianchodorek.renshiredux.Contract.Plugin.PresentationPlugin
-import com.damianchodorek.renshiredux.Contract.Presenter.MainPresenter
+import com.damianchodorek.renshiredux.Contract.Plugin.MakeApiCallBtnFragmentPlugin
+import com.damianchodorek.renshiredux.Contract.Presenter.MakeApiCallBtnPresenter
 import com.damianchodorek.renshiredux.store.state.MainActivityState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
-class MainPresenterImpl(
+class MakeApiCallBtnPresenterImpl(
         private val log: (Throwable) -> Unit = { it.printStackTrace() }
-) : BaseController<PresentationPlugin, MainActivityState>(), MainPresenter {
+) : BaseController<MakeApiCallBtnFragmentPlugin, MainActivityState>(), MakeApiCallBtnPresenter {
 
     override fun onAttachPlugin() {
         disposeOnDetach(
@@ -22,13 +22,8 @@ class MainPresenterImpl(
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy(
                                 onNext = {
-                                    if (it) {
-                                        plugin?.hideButton()
-                                        plugin?.showLoading()
-                                    } else {
-                                        plugin?.showButton()
-                                        plugin?.hideLoading()
-                                    }
+                                    if (it) plugin?.hideButton()
+                                    else plugin?.showButton()
                                 },
                                 onError = { log(it) }
                         )

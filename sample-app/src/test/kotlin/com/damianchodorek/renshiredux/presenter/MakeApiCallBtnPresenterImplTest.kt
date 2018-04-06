@@ -1,7 +1,7 @@
 package com.damianchodorek.renshiredux.presenter
 
 import com.damianchodorek.renshi.store.Store
-import com.damianchodorek.renshiredux.Contract.Plugin.PresentationPlugin
+import com.damianchodorek.renshiredux.Contract.Plugin.MakeApiCallBtnFragmentPlugin
 import com.damianchodorek.renshiredux.store.MainActivityStore
 import com.damianchodorek.renshiredux.store.state.MainActivityState
 import com.damianchodorek.renshiredux.utils.RxTestRule
@@ -14,20 +14,20 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class MainPresenterImplTest {
+class MakeApiCallBtnPresenterImplTest {
 
     @Suppress("unused")
     @get:Rule
     val rxRule = RxTestRule()
 
-    private val pluginMock = mock<PresentationPlugin>()
+    private val pluginMock = mock<MakeApiCallBtnFragmentPlugin>()
     private val stateChanges = PublishProcessor.create<MainActivityState>()
     private val storeMock = mock<Store<MainActivityState>>().apply {
         whenever(dispatch(any())).thenReturn(Completable.complete())
-        whenever(stateChanges).thenReturn(this@MainPresenterImplTest.stateChanges)
+        whenever(stateChanges).thenReturn(this@MakeApiCallBtnPresenterImplTest.stateChanges)
     }
     private val logMock = mock<(Throwable) -> Unit>()
-    private val presenter = MainPresenterImpl(logMock).apply {
+    private val presenter = MakeApiCallBtnPresenterImpl(logMock).apply {
         setStoreRef(storeMock)
         setPluginRef(pluginMock)
     }
@@ -39,9 +39,9 @@ class MainPresenterImplTest {
 
     @Test
     fun init_doesNothingWithPlugin() {
-        val pluginMock = mock<PresentationPlugin>()
+        val pluginMock = mock<MakeApiCallBtnFragmentPlugin>()
 
-        MainPresenterImpl().apply {
+        MakeApiCallBtnPresenterImpl().apply {
             setStoreRef(mock())
             setPluginRef(pluginMock)
         }
@@ -53,7 +53,7 @@ class MainPresenterImplTest {
     fun init_doesNothingWithStore() {
         val storeMock = mock<MainActivityStore>()
 
-        MainPresenterImpl().apply {
+        MakeApiCallBtnPresenterImpl().apply {
             setStoreRef(storeMock)
             setPluginRef(mock())
         }
@@ -104,21 +104,6 @@ class MainPresenterImplTest {
     }
 
     @Test
-    fun stateChanges_showsLoading_whenStateLoading() {
-        emitStateLoading()
-        verify(pluginMock).showLoading()
-    }
-
-    @Test
-    fun stateChanges_doesShowLoading_whenTheSameStateEmittedAgain() {
-        emitStateLoading()
-
-        emitStateLoading()
-
-        verify(pluginMock).showLoading()
-    }
-
-    @Test
     fun stateChanges_showsButton_whenStateNotLoading() {
         emitStateChangedToNotLoading()
         verify(pluginMock).showButton()
@@ -138,30 +123,5 @@ class MainPresenterImplTest {
         emitStateNotLoading()
 
         verify(pluginMock).showButton()
-    }
-
-    @Test
-    fun stateChanges_hidesLoading_whenStateNotLoading() {
-        emitStateChangedToNotLoading()
-
-        verify(pluginMock).hideLoading()
-    }
-
-    @Test
-    fun stateChanges_doesNotHideLoadingAgain_whenStateNotChanged() {
-        emitStateChangedToNotLoading()
-
-        emitStateNotLoading()
-
-        verify(pluginMock).hideLoading()
-    }
-
-    @Test
-    fun stateChanges_hidesLoadingAgain_whenStateChangedAgain() {
-        emitStateChangedToNotLoading()
-
-        emitStateChangedToNotLoading()
-
-        verify(pluginMock, times(2)).hideLoading()
     }
 }

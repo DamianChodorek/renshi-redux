@@ -1,7 +1,7 @@
 package com.damianchodorek.renshiredux.plugin
 
-import com.damianchodorek.renshiredux.MainActivity
 import com.damianchodorek.renshiredux.R
+import com.damianchodorek.renshiredux.view.MainActivity
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.pascalwelsch.compositeandroid.activity.ActivityDelegate

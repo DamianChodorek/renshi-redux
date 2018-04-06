@@ -1,9 +1,9 @@
 package com.damianchodorek.renshiredux.controller
 
 import com.damianchodorek.renshi.controller.base.BaseController
-import com.damianchodorek.renshiredux.Contract.Controller.MakeApiCallController
+import com.damianchodorek.renshiredux.Contract.Controller.MakeApiCallBtnController
 import com.damianchodorek.renshiredux.Contract.Interactor.MakeApiCallInteractor
-import com.damianchodorek.renshiredux.Contract.Plugin.MakeApiCallButtonPlugin
+import com.damianchodorek.renshiredux.Contract.Plugin.MakeApiCallBtnFragmentPlugin
 import com.damianchodorek.renshiredux.action.FinishingApiCallAction
 import com.damianchodorek.renshiredux.action.MakingApiCallAction
 import com.damianchodorek.renshiredux.controller.interactor.MakeApiCallInteractorImpl
@@ -14,7 +14,7 @@ import io.reactivex.subjects.PublishSubject
 class MakeApiCallControllerImpl(
         private val interactor: MakeApiCallInteractor = MakeApiCallInteractorImpl(),
         private val log: (Throwable) -> Unit = { it.printStackTrace() }
-) : BaseController<MakeApiCallButtonPlugin, MainActivityState>(), MakeApiCallController {
+) : BaseController<MakeApiCallBtnFragmentPlugin, MainActivityState>(), MakeApiCallBtnController {
 
     private val makeApiCallRequests = PublishSubject.create<Unit>()
 

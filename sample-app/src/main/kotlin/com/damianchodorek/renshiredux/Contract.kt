@@ -10,30 +10,30 @@ interface Contract {
     interface Plugin {
         interface InitializingPlugin : ActivityPlugin
 
-        interface MakeApiCallButtonPlugin : FragmentPlugin {
+        interface MakeApiCallBtnFragmentPlugin : FragmentPlugin {
             val makeApiCallClicks: Observable<Unit>
-        }
-
-        interface PresentationPlugin : ActivityPlugin {
             fun hideButton()
             fun showButton()
+        }
+
+        interface ProgressBarFragmentPlugin : FragmentPlugin {
             fun hideLoading()
             fun showLoading()
         }
     }
 
     interface Controller {
-        interface MakeApiCallController : Controller
-    }
-
-    interface Interactor {
-
-        interface MakeApiCallInteractor {
-            fun makeFakeApiCall(): Completable
-        }
+        interface MakeApiCallBtnController : Controller
     }
 
     interface Presenter {
-        interface MainPresenter : Controller
+        interface MakeApiCallBtnPresenter : Controller
+        interface ProgressBarPresenter : Controller
+    }
+
+    interface Interactor {
+        interface MakeApiCallInteractor {
+            fun makeFakeApiCall(): Completable
+        }
     }
 }

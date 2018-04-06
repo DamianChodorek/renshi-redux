@@ -2,7 +2,7 @@ package com.damianchodorek.renshiredux.controller
 
 import com.damianchodorek.renshi.store.Store
 import com.damianchodorek.renshiredux.Contract.Interactor.MakeApiCallInteractor
-import com.damianchodorek.renshiredux.Contract.Plugin.MakeApiCallButtonPlugin
+import com.damianchodorek.renshiredux.Contract.Plugin.MakeApiCallBtnFragmentPlugin
 import com.damianchodorek.renshiredux.action.FinishingApiCallAction
 import com.damianchodorek.renshiredux.action.MakingApiCallAction
 import com.damianchodorek.renshiredux.store.MainActivityStore
@@ -23,7 +23,7 @@ class MakeApiCallControllerImplTest {
     val rxRule = RxTestRule()
 
     private val clicks = PublishSubject.create<Unit>()
-    private val pluginMock = mock<MakeApiCallButtonPlugin>().apply {
+    private val pluginMock = mock<MakeApiCallBtnFragmentPlugin>().apply {
         whenever(makeApiCallClicks).thenReturn(clicks)
     }
     private val storeMock = mock<Store<*>>().apply {
@@ -45,7 +45,7 @@ class MakeApiCallControllerImplTest {
 
     @Test
     fun init_doesNothingWithPlugin() {
-        val pluginMock = mock<MakeApiCallButtonPlugin>()
+        val pluginMock = mock<MakeApiCallBtnFragmentPlugin>()
 
         MakeApiCallControllerImpl().apply {
             setStoreRef(mock())
