@@ -1,7 +1,6 @@
-package com.damianchodorek.renshiredux
+package com.damianchodorek.renshiredux.view
 
 import com.damianchodorek.renshiredux.store.MainActivityStore
-import com.damianchodorek.renshiredux.view.MainActivity
 import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
