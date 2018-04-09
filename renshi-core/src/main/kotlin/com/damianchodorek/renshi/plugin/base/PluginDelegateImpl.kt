@@ -25,9 +25,9 @@ class PluginDelegateImpl(
         controllerInitializer.init(
                 store = storeProvider(),
                 createController = controllerProvider,
-                getControllerFromViewCache = { getControllerFromViewCache() },
-                saveControllerToViewCache = { controller -> saveControllerToViewCache(controller) },
-                saveStoreToStoreOwnerCache = { store -> saveStoreToViewCache(store) }
+                getControllerFromStoreOwnerCache = { getControllerFromStoreOwnerCache() },
+                saveControllerToStoreOwnerCache = { controller -> saveControllerToStoreOwnerCache(controller) },
+                saveStoreToStoreOwnerCache = { store -> saveStoreToStoreOwnerCache(store) }
         )?.apply {
             setPluginRef(pluginProvider())
             onAttachPlugin()
@@ -37,17 +37,17 @@ class PluginDelegateImpl(
     override fun onStopPlugin(): Unit {
         if (started.not()) return
         started = false
-        getControllerFromViewCache()?.onDetachPlugin()
+        getControllerFromStoreOwnerCache()?.onDetachPlugin()
     }
 
-    private fun getControllerFromViewCache(): Controller? =
+    private fun getControllerFromStoreOwnerCache(): Controller? =
             storeOwnerCacheProvider().getController(pluginNameProvider())
 
-    private fun saveControllerToViewCache(controller: Controller) {
+    private fun saveControllerToStoreOwnerCache(controller: Controller) {
         storeOwnerCacheProvider().addController(pluginNameProvider(), controller)
     }
 
-    private fun saveStoreToViewCache(store: Store<*>) {
+    private fun saveStoreToStoreOwnerCache(store: Store<*>) {
         storeOwnerCacheProvider().addStore(store::class.java.name, store)
     }
 }
