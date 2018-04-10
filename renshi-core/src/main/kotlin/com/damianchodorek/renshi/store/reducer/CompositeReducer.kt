@@ -4,11 +4,22 @@ import com.damianchodorek.renshi.action.Action
 import io.reactivex.Single
 import kotlin.reflect.KClass
 
+/**
+ * Enables to use group of independent reducers as one reducer. You should use this class to
+ * split top level reducer to subreducers. Read more at: https://redux.js.org/recipes/structuring-reducers/splitting-reducer-logic
+ * @param STATE the type of state that reducer should operate on.
+ */
 @Suppress("UNCHECKED_CAST")
 open class CompositeReducer<STATE> : Reducer<Action, STATE> {
 
     private val reducers = mutableMapOf<KClass<*>, Reducer<*, STATE>>()
 
+    /**
+     * Adds new reducer to composite.
+     * @param actionClass type of action that subreducer should respond to.
+     * @param reducer subreducer.
+     * @return this.
+     */
     fun <ACTION : Action> add(
             actionClass: KClass<ACTION>,
             reducer: Reducer<ACTION, STATE>

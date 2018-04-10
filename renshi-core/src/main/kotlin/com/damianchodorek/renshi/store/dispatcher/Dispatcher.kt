@@ -7,13 +7,27 @@ import com.damianchodorek.renshi.store.state.StateContainer
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 
+/**
+ * Responsible for calling [Reducer.reduce] on currently set reducer.
+ * @param ACTION the subtype of action to reduce.
+ */
 interface Dispatcher<in ACTION : Action> {
 
+    /**
+     * Calls [Reducer.reduce] with current store state and [action].
+     * @param action action to dispatch.
+     */
     fun dispatch(action: ACTION): Completable
 
     @Suppress("UNCHECKED_CAST")
     companion object {
 
+        /**
+         * Creates new dispatcher that updates state using proper reducer.
+         * @param stateContainer olds current store state.
+         * @param reducer top level reducer that should handle all [dispatch] calls.
+         * @return new [Dispatcher] instance.
+         */
         fun <STATE : State, ACTION : Action> create(
                 stateContainer: StateContainer<STATE>,
                 reducer: Reducer<ACTION, STATE>

@@ -10,9 +10,19 @@ import com.damianchodorek.renshi.store.state.base.BaseStateContainer
 import io.reactivex.Completable
 import io.reactivex.Flowable
 
+/**
+ * Base implementation of [Store].
+ * @param STATE the subtype of [State] that store holds.
+ */
 abstract class BaseStore<STATE : State> : Store<STATE> {
 
+    /**
+     * Initial state for store.
+     */
     protected abstract val initialState: STATE
+    /**
+     * Object that updates store state. Usually this is [com.damianchodorek.renshi.store.reducer.CompositeReducer].
+     */
     protected abstract val stateReducer: Reducer<Action, STATE>
 
     private val stateContainer: StateContainer<STATE> by lazy { BaseStateContainer(initialState) }

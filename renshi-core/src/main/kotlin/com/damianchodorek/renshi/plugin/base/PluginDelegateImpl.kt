@@ -6,6 +6,14 @@ import com.damianchodorek.renshi.plugin.PluginDelegate
 import com.damianchodorek.renshi.store.Store
 import com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache
 
+/**
+ * Base implementation of [PluginDelegate].
+ * @property storeProvider function that returns instance of [com.damianchodorek.renshi.store.Store].
+ * @property storeOwnerCacheProvider function that returns instance of [com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache].
+ * @property controllerProvider function that returns optional instance of [com.damianchodorek.renshi.controller.Controller].
+ * @property pluginProvider function that returns plugin.
+ * @property pluginNameProvider function that returns name of the plugin. By default it is plugin class name.
+ */
 @Suppress("RedundantUnitReturnType")
 class PluginDelegateImpl(
         private val storeProvider: () -> Store<*>,

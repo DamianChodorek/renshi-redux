@@ -8,6 +8,13 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
 
+/**
+ * Base implementation of [Controller] to reduce boilerplate. Your controllers should extend
+ * this class.
+ * @param PLUGIN the type of a plugin that controller will access.
+ * @param STATE the subtype of [com.damianchodorek.renshi.store.state.State] that will be
+ * used by constrollers store reference.
+ */
 @Suppress("UNCHECKED_CAST", "RedundantUnitReturnType")
 abstract class BaseController<PLUGIN, STATE : State> : Controller {
 
