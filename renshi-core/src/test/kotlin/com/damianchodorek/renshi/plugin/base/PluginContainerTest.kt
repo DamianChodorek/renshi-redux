@@ -5,9 +5,9 @@ import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.junit.Test
 
-class BasePlugableComponentTest {
+class PluginContainerTest {
 
-    private val component = object : BasePlugableComponent<Any>() {
+    private val container = object : PluginContainer<Any>() {
         fun getAllPlugins() = plugins
     }
 
@@ -15,8 +15,8 @@ class BasePlugableComponentTest {
     fun add_addsPlugins() {
         val plugins = listOf<Any>(mock(), mock(), mock())
 
-        plugins.forEach { component.addPlugin(it) }
+        plugins.forEach { container.addPlugin(it) }
 
-        MatcherAssert.assertThat(component.getAllPlugins(), CoreMatchers.equalTo(plugins))
+        MatcherAssert.assertThat(container.getAllPlugins(), CoreMatchers.equalTo(plugins))
     }
 }
