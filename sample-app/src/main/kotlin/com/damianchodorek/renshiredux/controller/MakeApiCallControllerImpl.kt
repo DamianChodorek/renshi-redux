@@ -1,9 +1,9 @@
 package com.damianchodorek.renshiredux.controller
 
 import com.damianchodorek.renshi.controller.base.BaseController
-import com.damianchodorek.renshiredux.Contract.Controller.MakeApiCallBtnController
 import com.damianchodorek.renshiredux.Contract.Interactor.MakeApiCallInteractor
 import com.damianchodorek.renshiredux.Contract.Plugin.MakeApiCallBtnFragmentPlugin
+import com.damianchodorek.renshiredux.Contract.PluginController.MakeApiCallBtnController
 import com.damianchodorek.renshiredux.action.FinishingApiCallAction
 import com.damianchodorek.renshiredux.action.MakingApiCallAction
 import com.damianchodorek.renshiredux.controller.interactor.MakeApiCallInteractorImpl

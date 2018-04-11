@@ -2,7 +2,7 @@ package com.damianchodorek.renshiredux.presenter
 
 import com.damianchodorek.renshi.controller.base.BaseController
 import com.damianchodorek.renshiredux.Contract.Plugin.ProgressBarFragmentPlugin
-import com.damianchodorek.renshiredux.Contract.Presenter.ProgressBarPresenter
+import com.damianchodorek.renshiredux.Contract.PluginPresenter.ProgressBarPresenter
 import com.damianchodorek.renshiredux.store.state.MainActivityState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
