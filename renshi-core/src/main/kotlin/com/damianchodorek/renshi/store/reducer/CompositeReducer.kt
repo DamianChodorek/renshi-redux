@@ -46,6 +46,10 @@ open class CompositeReducer<STATE> : Reducer<Action, STATE> {
                                 }
             }
 
+    /**
+     * Calls [Reducer.reduce] on reducer that is registered to handle specific [action].
+     * If no reducer is registered for [action] then old [state] is emitted.
+     */
     override fun reduce(action: Action, state: STATE): Single<STATE> =
             Single
                     .just(action::class)

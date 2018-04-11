@@ -4,6 +4,9 @@ import com.damianchodorek.renshi.controller.Controller
 import com.damianchodorek.renshi.store.Store
 import com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache
 
+/**
+ * Base implementation of [StoreOwnerCache] that uses LinkedHashMap as cache.
+ */
 class BaseStoreOwnerCache : StoreOwnerCache {
 
     internal val controllers: MutableMap<String, Controller> = mutableMapOf()

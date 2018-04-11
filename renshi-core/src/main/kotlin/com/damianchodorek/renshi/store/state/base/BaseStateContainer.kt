@@ -5,6 +5,10 @@ import com.damianchodorek.renshi.store.state.StateContainer
 import io.reactivex.processors.BehaviorProcessor
 import kotlin.properties.Delegates
 
+/**
+ * Base implementation of [StateContainer].
+ * @param STATE the type of state.
+ */
 class BaseStateContainer<STATE : State>(
         initialState: STATE
 ) : StateContainer<STATE> {
