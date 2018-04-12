@@ -11,7 +11,7 @@ abstract class BaseFragment : CompositeFragment(), StoreOwner, Plugable<Fragment
 
     abstract override val store: Store<*>
 
-    override fun addPlugin(plugin: FragmentPlugin): Unit {
+    override fun plug(plugin: FragmentPlugin): Unit {
         try {
             addPlugin(plugin as com.pascalwelsch.compositeandroid.fragment.FragmentPlugin)
         } catch (classCast: ClassCastException) {

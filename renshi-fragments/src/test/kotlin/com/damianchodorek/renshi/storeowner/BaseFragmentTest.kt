@@ -16,14 +16,14 @@ class BaseFragmentTest {
     fun addPlugin_castsPluginToFragmentPluginAndAdds() {
         val pluginMock = mock<BaseFragmentPlugin>() as FragmentPlugin
 
-        fragment.addPlugin(pluginMock)
+        fragment.plug(pluginMock)
 
         verify(fragment).addPlugin(pluginMock as com.pascalwelsch.compositeandroid.fragment.FragmentPlugin)
     }
 
     @Test(expected = IllegalStateException::class)
     fun addPlugin_throwsIllegalStateException_whenPluginDoesntExtendBaseClass() {
-        fragment.addPlugin(mock<FragmentPlugin>())
+        fragment.plug(mock<FragmentPlugin>())
     }
 
 }

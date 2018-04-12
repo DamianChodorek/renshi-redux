@@ -17,16 +17,43 @@ interface Contract {
      * Plugins are delegates of view (activity, fragment) logic.
      */
     interface Plugin {
+        /**
+         * Initializes activity.
+         */
         interface InitializingPlugin : ActivityPlugin
 
+        /**
+         * Handles button view logic.
+         */
         interface MakeApiCallBtnFragmentPlugin : FragmentPlugin {
+            /**
+             * Emits event after every button press.
+             */
             val makeApiCallClicks: Observable<Unit>
+
+            /**
+             * Hides button.
+             */
             fun hideButton()
+
+            /**
+             * Shows button.
+             */
             fun showButton()
         }
 
+        /**
+         * Handles progress bar view logic.
+         */
         interface ProgressBarFragmentPlugin : FragmentPlugin {
+            /**
+             * Hides progress bar.
+             */
             fun hideLoading()
+
+            /**
+             * Shows progress bar.
+             */
             fun showLoading()
         }
     }
@@ -38,6 +65,9 @@ interface Contract {
      * by using layer of abstraction.
      */
     interface PluginController {
+        /**
+         * Responds to [Plugin.MakeApiCallBtnFragmentPlugin.makeApiCallClicks].
+         */
         interface MakeApiCallBtnController : Controller
     }
 

@@ -15,7 +15,7 @@ class PluginContainerTest {
     fun add_addsPlugins() {
         val plugins = listOf<Any>(mock(), mock(), mock())
 
-        plugins.forEach { container.addPlugin(it) }
+        plugins.forEach { container.plug(it) }
 
         MatcherAssert.assertThat(container.getAllPlugins(), CoreMatchers.equalTo(plugins))
     }

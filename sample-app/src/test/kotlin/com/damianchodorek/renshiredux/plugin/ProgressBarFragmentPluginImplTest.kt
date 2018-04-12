@@ -32,6 +32,11 @@ class ProgressBarFragmentPluginImplTest {
         whenever(inflate(any<Int>(), any(), any())).thenReturn(fragmentViewMock)
     }
     private val plugin = ProgressBarFragmentPluginImpl(fragmentMock)
+
+    /*
+    NOTE that to test plugin you must add it do delegate as presented below.
+    To test plugin method you call delegate.
+     */
     private val delegate = FragmentDelegate(fragmentMock).apply {
         addPlugin(plugin)
     }

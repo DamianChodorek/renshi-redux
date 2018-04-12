@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">App without plugins</string>
+    <string name="start_api_call_btn">Start API call</string>
+</resources>

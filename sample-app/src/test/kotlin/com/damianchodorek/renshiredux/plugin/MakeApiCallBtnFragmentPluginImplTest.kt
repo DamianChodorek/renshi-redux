@@ -33,6 +33,11 @@ class MakeApiCallBtnFragmentPluginImplTest {
     }
     private val fragmentMock = mock<BaseFragment>()
     private val plugin = MakeApiCallBtnFragmentPluginImpl(fragmentMock)
+
+    /*
+    NOTE that to test plugin you must add it do delegate as presented below.
+    To test plugin method you call delegate.
+     */
     private val delegate = FragmentDelegate(fragmentMock).apply {
         addPlugin(plugin)
     }

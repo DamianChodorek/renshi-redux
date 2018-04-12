@@ -23,7 +23,7 @@ abstract class BaseActivity : CompositeActivity(), StoreOwner, Plugable<Activity
      * @param plugin plugin to add. Must be instance of SimpleActivityPlugin or BaseActivityPlugin.
      * @throws IllegalStateException when plugin is not instance of SimpleActivityPlugin or BaseActivityPlugin.
      */
-    override fun addPlugin(plugin: ActivityPlugin): Unit {
+    override fun plug(plugin: ActivityPlugin): Unit {
         try {
             addPlugin(plugin as com.pascalwelsch.compositeandroid.activity.ActivityPlugin)
         } catch (classCast: ClassCastException) {

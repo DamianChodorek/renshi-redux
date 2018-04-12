@@ -1,1 +1,1 @@
-include ':sample-app', ':renshi-core', ':renshi-fragments'
+include ':sample-app', ':renshi-core', ':renshi-fragments', ':sample-simple-app-without-plugins', ':sample-custom-plugins'

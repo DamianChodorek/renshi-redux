@@ -5,8 +5,13 @@ import com.damianchodorek.renshiredux.action.MakingApiCallAction
 import com.damianchodorek.renshiredux.store.state.MainActivityState
 import io.reactivex.Single
 
+/**
+ * Changes state when api call is started. It uses slice reducers to outsource logic of changing
+ * proper state parts. It is overkill to do it here, but it is for education purposes.
+ */
 class MakingApiCallReducer : Reducer<MakingApiCallAction, MainActivityState> {
 
+    // slice reducers for every state field
     private val apicallCountSliceReducer = ApiCallsCountSliceReducer()
     private val loadingSliceReducer = LoadingSliceReducer()
 

@@ -16,14 +16,14 @@ class BaseActivityTest {
     fun addPlugin_castsPluginToActivityPluginAndAdds() {
         val pluginMock = mock<BaseActivityPlugin>() as ActivityPlugin
 
-        activity.addPlugin(pluginMock)
+        activity.plug(pluginMock)
 
         verify(activity).addPlugin(pluginMock as com.pascalwelsch.compositeandroid.activity.ActivityPlugin)
     }
 
     @Test(expected = IllegalStateException::class)
     fun addPlugin_throwsIllegalStateException_whenPluginDoesntExtendBaseClass() {
-        activity.addPlugin(mock<ActivityPlugin>())
+        activity.plug(mock<ActivityPlugin>())
     }
 }
 

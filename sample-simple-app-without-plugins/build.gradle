@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion target_version
+    defaultConfig {
+        applicationId "com.damianchodorek.sample_simple_app_without_plugins"
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_version
+        versionCode version_code
+        versionName version_name
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+    implementation project(':renshi-core')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "com.android.support:support-annotations:$support_version"
+    implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+
+    androidTestImplementation("com.android.support.test:runner:$test_runner_version")
+
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "com.nhaarman:mockito-kotlin:$kotlin_mockito_version"
+    testImplementation "org.hamcrest:hamcrest-library:$hamcrest_verson"
+}

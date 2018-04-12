@@ -11,6 +11,11 @@ class InitializingPluginImplTest {
 
     private val activityMock = mock<MainActivity>()
     private val plugin = InitializingPluginImpl(activityMock)
+
+    /*
+    NOTE that to test plugin you must add it do delegate as presented below.
+    To test plugin method you call delegate.
+     */
     private val delegate = ActivityDelegate(activityMock).apply {
         addPlugin(plugin)
     }

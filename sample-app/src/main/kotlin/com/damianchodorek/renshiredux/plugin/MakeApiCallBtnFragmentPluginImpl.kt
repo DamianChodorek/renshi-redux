@@ -15,10 +15,13 @@ import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_make_api_call.view.*
 
 class MakeApiCallBtnFragmentPluginImpl(
-        fragment: BaseFragment
+        fragment: BaseFragment //it can be any fragment that inherits from BaseFragment
 ) : BaseFragmentPlugin(fragment), MakeApiCallBtnFragmentPlugin {
 
-    override var makeApiCallClicks = PublishSubject.create<Unit>()!!
+    /**
+     * Emits event on every button press.
+     */
+    override val makeApiCallClicks = PublishSubject.create<Unit>()!!
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -36,6 +39,9 @@ class MakeApiCallBtnFragmentPluginImpl(
         fragment.view!!.visibility = View.VISIBLE
     }
 
+    /*
+    We compose two independent controllers into one. You can split your controller logic as you wish.
+     */
     override fun createController() = CompositeController(
             listOf(MakeApiCallControllerImpl(), MakeApiCallBtnPresenterImpl())
     )

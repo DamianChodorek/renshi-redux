@@ -11,7 +11,7 @@ open class PluginContainer<PLUGIN> : Plugable<PLUGIN> {
 
     protected val plugins = mutableListOf<PLUGIN>()
 
-    override fun addPlugin(plugin: PLUGIN): Unit {
+    override fun plug(plugin: PLUGIN): Unit {
         plugins.add(plugin)
     }
 }

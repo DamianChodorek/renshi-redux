@@ -10,6 +10,9 @@ import com.damianchodorek.renshiredux.Contract
 import com.damianchodorek.renshiredux.R
 import com.damianchodorek.renshiredux.presenter.ProgressBarPresenterImpl
 
+/**
+ * Responsible for progress bar.
+ */
 class ProgressBarFragmentPluginImpl(
         fragment: BaseFragment
 ) : BaseFragmentPlugin(fragment), Contract.Plugin.ProgressBarFragmentPlugin {

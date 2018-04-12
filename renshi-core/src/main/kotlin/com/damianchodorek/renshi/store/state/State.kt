@@ -2,7 +2,10 @@ package com.damianchodorek.renshi.store.state
 
 /**
  * Represents current state of [com.damianchodorek.renshi.store.StoreOwner].
- * Usually you implement this interface by using data classes.
+ * Usually you implement this interface by using data class.
+ *
+ * It's very important to structure your state properly. Read more at:
+ * https://redux.js.org/recipes/structuring-reducers/normalizing-state-shape
  */
 interface State {
 

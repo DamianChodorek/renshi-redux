@@ -11,7 +11,7 @@ abstract class BaseDialogFragment : CompositeDialogFragment(), StoreOwner, Pluga
 
     abstract override val store: Store<*>
 
-    override fun addPlugin(plugin: DialogFragmentPlugin): Unit {
+    override fun plug(plugin: DialogFragmentPlugin): Unit {
         try {
             addPlugin(plugin as com.pascalwelsch.compositeandroid.fragment.DialogFragmentPlugin)
         } catch (classCast: ClassCastException) {

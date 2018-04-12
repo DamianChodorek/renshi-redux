@@ -40,7 +40,6 @@ dependencies {
     api "com.pascalwelsch.compositeandroid:activity:$composite_android_version"
     implementation "com.android.support:support-annotations:$support_version"
 
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:$espresso_version")
     androidTestImplementation("com.android.support.test:runner:$test_runner_version")
 
     testImplementation "junit:junit:$junit_version"
