@@ -7,8 +7,8 @@ import com.damianchodorek.renshi.utils.impl.StateTestImpl
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
-import org.hamcrest.CoreMatchers
-import org.hamcrest.MatcherAssert
+import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Rule
 import org.junit.Test
 
@@ -31,7 +31,7 @@ class BaseStoreTest {
 
     @Test
     fun init_createBaseStoreContainerWithInitialState() {
-        MatcherAssert.assertThat(store.state, CoreMatchers.equalTo(initialStateMock))
+        assertThat(store.state, equalTo(initialStateMock))
     }
 
     @Test

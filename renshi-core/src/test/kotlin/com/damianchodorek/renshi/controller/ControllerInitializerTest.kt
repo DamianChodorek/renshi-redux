@@ -5,8 +5,8 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyZeroInteractions
 import com.nhaarman.mockito_kotlin.whenever
-import org.hamcrest.CoreMatchers
-import org.hamcrest.MatcherAssert
+import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
 /**
@@ -42,7 +42,7 @@ class ControllerInitializerTest {
 
         val result = initializer.init(mock(), mock(), getControllerFromCache, mock(), mock())
 
-        MatcherAssert.assertThat(result, CoreMatchers.equalTo(controller))
+        assertThat(result, equalTo(controller))
     }
 
     private fun createControllerProvider(controllerToReturn: Controller?) =
@@ -76,7 +76,7 @@ class ControllerInitializerTest {
 
         val result = initializer.init(mock(), createController, mock(), mock(), mock())
 
-        MatcherAssert.assertThat(result, CoreMatchers.equalTo(controller))
+        assertThat(result, equalTo(controller))
     }
 
     @Test

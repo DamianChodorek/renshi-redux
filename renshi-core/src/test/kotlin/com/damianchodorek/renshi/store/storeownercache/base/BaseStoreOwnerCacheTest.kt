@@ -7,8 +7,8 @@ import com.damianchodorek.renshi.store.state.State
 import com.damianchodorek.renshi.storeowner.BaseActivity
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
-import org.hamcrest.MatcherAssert
-import org.hamcrest.Matchers
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.equalTo
 import org.junit.Before
 import org.junit.Test
 
@@ -45,25 +45,25 @@ class BaseStoreOwnerCacheTest {
 
     @Test
     fun addController_addsController() {
-        MatcherAssert.assertThat(cache.controllers.size, Matchers.equalTo(controllers.size))
+        assertThat(cache.controllers.size, equalTo(controllers.size))
     }
 
     @Test
     fun getController_returnsProperController() {
         controllers.forEach {
-            MatcherAssert.assertThat(cache.getController(it.first)!! == it.second, Matchers.equalTo(true))
+            assertThat(cache.getController(it.first)!! == it.second, equalTo(true))
         }
     }
 
     @Test
     fun addStore_addsStore() {
-        MatcherAssert.assertThat(cache.stores.size, Matchers.equalTo(stores.size))
+        assertThat(cache.stores.size, equalTo(stores.size))
     }
 
     @Test
     fun getStore_returnsProperStore() {
         stores.forEach {
-            MatcherAssert.assertThat(cache.getStore(it.first)!! == it.second, Matchers.equalTo(true))
+            assertThat(cache.getStore(it.first)!! == it.second, equalTo(true))
         }
     }
 
@@ -76,12 +76,12 @@ class BaseStoreOwnerCacheTest {
     @Test
     fun onDestroy_clearsControllers() {
         cache.onDestroy()
-        MatcherAssert.assertThat(cache.controllers.size, Matchers.equalTo(0))
+        assertThat(cache.controllers.size, equalTo(0))
     }
 
     @Test
     fun onDestroy_clearsStores() {
         cache.onDestroy()
-        MatcherAssert.assertThat(cache.stores.size, Matchers.equalTo(0))
+        assertThat(cache.stores.size, equalTo(0))
     }
 }

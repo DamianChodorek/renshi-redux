@@ -1,5 +1,6 @@
 package com.damianchodorek.sample_simple_app_without_plugins.utils
 
+import com.damianchodorek.renshi.store.dispatcher.Dispatcher
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
@@ -22,12 +23,14 @@ class RxTestRule : TestRule {
                     RxJavaPlugins.setSingleSchedulerHandler { Schedulers.trampoline() }
                     RxAndroidPlugins.setMainThreadSchedulerHandler { Schedulers.trampoline() }
                     RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
+                    Dispatcher.schedulerProvider = { Schedulers.trampoline() }
 
                     try {
                         base!!.evaluate()
                     } finally {
                         RxJavaPlugins.reset()
                         RxAndroidPlugins.reset()
+                        Dispatcher.resetSchedulerProvider()
                     }
                 }
             }

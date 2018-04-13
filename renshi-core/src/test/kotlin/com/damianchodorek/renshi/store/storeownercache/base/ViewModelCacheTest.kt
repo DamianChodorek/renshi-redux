@@ -7,8 +7,8 @@ import com.damianchodorek.renshi.store.state.State
 import com.damianchodorek.renshi.storeowner.BaseActivity
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
-import org.hamcrest.MatcherAssert
-import org.hamcrest.Matchers
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.equalTo
 import org.junit.Before
 import org.junit.Test
 
@@ -46,13 +46,13 @@ class ViewModelCacheTest {
     @Test
     fun onCleared_clearsControllers() {
         cache.onClearedInternal()
-        MatcherAssert.assertThat(cache.baseStoreOwnerCache.controllers.size, Matchers.equalTo(0))
+        assertThat(cache.baseStoreOwnerCache.controllers.size, equalTo(0))
     }
 
     @Test
     fun onCleared_clearsStores() {
         cache.onClearedInternal()
-        MatcherAssert.assertThat(cache.baseStoreOwnerCache.stores.size, Matchers.equalTo(0))
+        assertThat(cache.baseStoreOwnerCache.stores.size, equalTo(0))
     }
 
     @Test

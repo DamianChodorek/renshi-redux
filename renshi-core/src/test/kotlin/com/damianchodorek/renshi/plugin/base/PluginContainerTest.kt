@@ -2,7 +2,7 @@ package com.damianchodorek.renshi.plugin.base
 
 import com.nhaarman.mockito_kotlin.mock
 import org.hamcrest.CoreMatchers
-import org.hamcrest.MatcherAssert
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
 /**
@@ -20,6 +20,6 @@ class PluginContainerTest {
 
         plugins.forEach { container.plug(it) }
 
-        MatcherAssert.assertThat(container.getAllPlugins(), CoreMatchers.equalTo(plugins))
+        assertThat(container.getAllPlugins(), CoreMatchers.equalTo(plugins))
     }
 }

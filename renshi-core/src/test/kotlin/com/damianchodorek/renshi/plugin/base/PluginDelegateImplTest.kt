@@ -5,8 +5,8 @@ import com.damianchodorek.renshi.controller.ControllerInitializer
 import com.damianchodorek.renshi.store.Store
 import com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache
 import com.nhaarman.mockito_kotlin.*
-import org.hamcrest.CoreMatchers
-import org.hamcrest.MatcherAssert
+import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.mockito.InjectMocks
@@ -54,7 +54,7 @@ class PluginDelegateImplTest {
 
         delegate.onStartPlugin()
 
-        MatcherAssert.assertThat(captors.store.firstValue, CoreMatchers.equalTo(storeMock))
+        assertThat(captors.store.firstValue, equalTo(storeMock))
     }
 
     private fun prepareControllerInitializer(controllerToReturn: Controller? = controllerMock) =
@@ -74,7 +74,7 @@ class PluginDelegateImplTest {
 
         delegate.onStartPlugin()
 
-        MatcherAssert.assertThat(captors.createController.firstValue, CoreMatchers.equalTo(controllerProvider))
+        assertThat(captors.createController.firstValue, equalTo(controllerProvider))
     }
 
     @Test
@@ -83,7 +83,7 @@ class PluginDelegateImplTest {
 
         delegate.onStartPlugin()
 
-        MatcherAssert.assertThat(captors.getControllerFromPluginCache.firstValue(), CoreMatchers.equalTo(controllerMock))
+        assertThat(captors.getControllerFromPluginCache.firstValue(), equalTo(controllerMock))
     }
 
     @Test
