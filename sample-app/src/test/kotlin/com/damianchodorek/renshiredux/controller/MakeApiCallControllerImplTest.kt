@@ -16,6 +16,9 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class MakeApiCallControllerImplTest {
 
     @Suppress("unused")

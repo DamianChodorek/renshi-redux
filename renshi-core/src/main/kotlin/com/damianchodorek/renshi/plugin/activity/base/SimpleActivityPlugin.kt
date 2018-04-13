@@ -9,6 +9,7 @@ import com.damianchodorek.renshi.storeowner.BaseActivity
  * so you can split your view logic into any number of plugins, so your code scales.
  * Your plugin should extend this class only to do basic initial operations like setting activity
  * layout.
+ * @author Damian Chodorek
  */
 abstract class SimpleActivityPlugin(
         protected val activity: BaseActivity

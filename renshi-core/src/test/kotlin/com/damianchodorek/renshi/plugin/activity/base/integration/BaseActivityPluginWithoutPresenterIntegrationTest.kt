@@ -11,6 +11,9 @@ import org.hamcrest.CoreMatchers.nullValue
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 internal class BaseActivityPluginWithoutPresenterIntegrationTest : BaseActivityPluginBaseIntegrationTest() {
 
     @Test

@@ -14,6 +14,9 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import org.mockito.InjectMocks
 
+/**
+ * @author Damian Chodorek
+ */
 class BaseFragmentPluginTest : BasePluginTest() {
 
     private val activitytMock = mock<BaseActivity>()

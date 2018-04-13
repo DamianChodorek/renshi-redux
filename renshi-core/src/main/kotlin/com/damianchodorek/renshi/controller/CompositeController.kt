@@ -7,6 +7,7 @@ import io.reactivex.disposables.Disposable
  * Enables to use group of independent controllers as one controller. You should use this class to
  * attach many controllers to ControllerOwner (see: [com.damianchodorek.renshi.controller.ControllerOwner.createController]).
  * @property controllers list of controllers to compose.
+ * @author Damian Chodorek
  */
 @Suppress("RedundantUnitReturnType")
 open class CompositeController(

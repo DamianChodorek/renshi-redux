@@ -13,6 +13,7 @@ import com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache
  * @property controllerProvider function that returns optional instance of [com.damianchodorek.renshi.controller.Controller].
  * @property pluginProvider function that returns plugin.
  * @property pluginNameProvider function that returns name of the plugin. By default it is plugin class name.
+ * @author Damian Chodorek
  */
 @Suppress("RedundantUnitReturnType")
 class PluginDelegateImpl(

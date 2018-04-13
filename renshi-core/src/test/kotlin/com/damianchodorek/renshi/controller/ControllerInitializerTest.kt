@@ -9,6 +9,9 @@ import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class ControllerInitializerTest {
 
     private val initializer = ControllerInitializer()

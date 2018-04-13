@@ -5,6 +5,9 @@ import com.damianchodorek.renshi.store.state.State
 import io.reactivex.Single
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class CompositeReducerTest {
 
     private val compositeReducer = CompositeReducer<TestState>()

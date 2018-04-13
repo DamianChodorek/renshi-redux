@@ -7,6 +7,7 @@ import com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache
 
 /**
  * Builder for [PluginDelegate].
+ * @author Damian Chodorek
  */
 class PluginDelegateBuilder {
 

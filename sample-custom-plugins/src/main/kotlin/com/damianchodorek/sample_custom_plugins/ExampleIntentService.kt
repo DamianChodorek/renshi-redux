@@ -1,3 +1,6 @@
+/**
+ * Created by mateuszkoslacz on 14.12.2016.
+ */
 package com.damianchodorek.sample_custom_plugins
 
 import android.app.IntentService
@@ -16,6 +19,7 @@ import com.damianchodorek.sample_custom_plugins.store.ExampleIntentServiceStore
  * If for some reason you can't extend Renshi base store owners
  * (for example: [com.damianchodorek.renshi.storeowner.BaseActivity]),
  * you can create your own store owner and delegate it's methods to plugins as shown below.
+ * @author Damian Chodorek
  */
 class ExampleIntentService
     : IntentService("ExampleIntentService"), Plugable<IntentServicePlugin>, StoreOwner {

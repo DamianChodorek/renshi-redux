@@ -8,6 +8,7 @@ import com.damianchodorek.sample_custom_plugins.store.state.ExampleIntentService
 /**
  * Logs calls to crucial methods.
  * @param log logging abstraction.
+ * @author Damian Chodorek
  */
 class LoggingController(
         private val log: (String) -> Unit = { message -> Log.d("LoggingController", message) }

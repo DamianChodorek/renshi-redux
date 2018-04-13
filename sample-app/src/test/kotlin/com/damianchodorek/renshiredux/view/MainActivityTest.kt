@@ -5,6 +5,9 @@ import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class MainActivityTest {
 
     private val activity = MainActivity()

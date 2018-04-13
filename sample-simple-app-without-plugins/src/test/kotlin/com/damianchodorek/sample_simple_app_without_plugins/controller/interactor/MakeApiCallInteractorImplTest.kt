@@ -1,11 +1,14 @@
 package com.damianchodorek.sample_simple_app_without_plugins.controller.interactor
 
-import com.damianchodorek.renshiredux.utils.RxTestRule
+import com.damianchodorek.sample_simple_app_without_plugins.utils.RxTestRule
 import io.reactivex.schedulers.TestScheduler
 import org.junit.Rule
 import org.junit.Test
 import java.util.concurrent.TimeUnit
 
+/**
+ * @author Damian Chodorek
+ */
 class MakeApiCallInteractorImplTest {
 
     @Suppress("unused")

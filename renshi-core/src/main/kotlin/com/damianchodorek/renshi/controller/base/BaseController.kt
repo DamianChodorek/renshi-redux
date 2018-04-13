@@ -14,6 +14,7 @@ import java.lang.ref.WeakReference
  * @param PLUGIN the type of a plugin that controller will access.
  * @param STATE the subtype of [com.damianchodorek.renshi.store.state.State] that will be
  * used by constrollers store reference.
+ * @author Damian Chodorek
  */
 @Suppress("UNCHECKED_CAST", "RedundantUnitReturnType")
 abstract class BaseController<PLUGIN, STATE : State> : Controller {

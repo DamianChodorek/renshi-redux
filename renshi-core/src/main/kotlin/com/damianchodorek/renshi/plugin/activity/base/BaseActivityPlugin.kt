@@ -21,6 +21,7 @@ import com.damianchodorek.renshi.storeowner.BaseActivity
  * @property pluginDelegateBuilder builder of [PluginDelegate].
  * @property storeOwnerCacheProvider function that returns [com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache].
  * By default it is function that returns [com.damianchodorek.renshi.store.storeownercache.base.ViewModelCacheProvider].
+ * @author Damian Chodorek
  */
 @Suppress("RedundantUnitReturnType")
 abstract class BaseActivityPlugin(

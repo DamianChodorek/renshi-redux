@@ -11,6 +11,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Listens to state changes and performs appropriate logic on progress plugin.
  * @param log logs errors.
+ * @author Damian Chodorek
  */
 class ProgressBarPresenterImpl(
         private val log: (Throwable) -> Unit = { it.printStackTrace() }

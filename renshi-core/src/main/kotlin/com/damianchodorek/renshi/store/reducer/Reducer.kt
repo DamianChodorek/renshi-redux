@@ -7,6 +7,7 @@ import io.reactivex.Single
  * Specifies how the state changes in response to actions sent to the store.
  * Read more at: https://redux.js.org/basics/reducers
  * @param ACTION the subtype of action that reducer can use.
+ * @author Damian Chodorek
  */
 interface Reducer<in ACTION : Action, STATE> {
 

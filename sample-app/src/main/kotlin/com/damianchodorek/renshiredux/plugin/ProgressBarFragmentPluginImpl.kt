@@ -12,6 +12,7 @@ import com.damianchodorek.renshiredux.presenter.ProgressBarPresenterImpl
 
 /**
  * Responsible for progress bar.
+ * @author Damian Chodorek
  */
 class ProgressBarFragmentPluginImpl(
         fragment: BaseFragment

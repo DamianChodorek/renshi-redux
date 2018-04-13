@@ -11,6 +11,7 @@ import com.damianchodorek.renshiredux.store.MainActivityStore
  * Everything is synchronized by one reference to activity store.
  *
  * This is recommended way of using Renshi. It enables you to create scalable code without God Objects.
+ * @author Damian Chodorek
  */
 class MainActivity : BaseActivity() {
 

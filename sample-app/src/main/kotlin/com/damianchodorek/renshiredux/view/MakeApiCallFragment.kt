@@ -7,6 +7,7 @@ import com.damianchodorek.renshiredux.plugin.MakeApiCallBtnFragmentPluginImpl
 
 /**
  * Responsible for button that is used to make fake api call.
+ * @author Damian Chodorek
  */
 class MakeApiCallFragment : BaseFragment() {
 

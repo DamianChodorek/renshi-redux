@@ -5,6 +5,7 @@ import com.damianchodorek.renshi.plugin.Plugable
 /**
  * Base implementation of [Plugable] to reduce boilerplate.
  * @param PLUGIN the type of plugin.
+ * @author Damian Chodorek
  */
 @Suppress("RedundantUnitReturnType")
 open class PluginContainer<PLUGIN> : Plugable<PLUGIN> {

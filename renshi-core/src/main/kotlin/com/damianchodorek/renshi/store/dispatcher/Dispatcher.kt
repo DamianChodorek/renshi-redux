@@ -10,6 +10,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Responsible for calling [Reducer.reduce] on currently set reducer.
  * @param ACTION the subtype of action to reduce.
+ * @author Damian Chodorek
  */
 interface Dispatcher<in ACTION : Action> {
 

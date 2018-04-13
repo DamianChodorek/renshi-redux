@@ -8,6 +8,7 @@ import com.damianchodorek.renshi.store.Store
  * controllers ([com.damianchodorek.renshi.controller.Controller]) and its store [com.damianchodorek.renshi.store.Store].
  * Cache should be cleared before store owner is destroyed and won't be recreated. For example
  * when activity orientation changes, cache shouldn't be cleared.
+ * @author Damian Chodorek
  */
 @Suppress("RedundantUnitReturnType")
 interface StoreOwnerCache {

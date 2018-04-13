@@ -13,6 +13,9 @@ import com.nhaarman.mockito_kotlin.whenever
 import com.pascalwelsch.compositeandroid.activity.ActivityDelegate
 import org.junit.Rule
 
+/**
+ * @author Damian Chodorek
+ */
 internal abstract class BaseActivityPluginBaseIntegrationTest {
 
     @Suppress("unused")

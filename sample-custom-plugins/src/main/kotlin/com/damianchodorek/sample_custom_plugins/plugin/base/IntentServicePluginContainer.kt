@@ -5,6 +5,7 @@ import com.damianchodorek.renshi.plugin.base.PluginContainer
 
 /**
  * Container for plugins that composes them into one plugin.
+ * @author Damian Chodorek
  */
 class IntentServicePluginContainer : PluginContainer<IntentServicePlugin>(), IntentServicePlugin {
 

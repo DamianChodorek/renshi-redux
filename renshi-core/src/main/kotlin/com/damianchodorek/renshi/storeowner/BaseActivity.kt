@@ -9,6 +9,7 @@ import com.pascalwelsch.compositeandroid.activity.CompositeActivity
 /**
  * Base class for all activities that will be using redux along with plugins and controllers.
  * Extend this class, override store property and add desired plugins.
+ * @author Damian Chodorek
  */
 @Suppress("RedundantUnitReturnType")
 abstract class BaseActivity : CompositeActivity(), StoreOwner, Plugable<ActivityPlugin> {
@@ -20,8 +21,12 @@ abstract class BaseActivity : CompositeActivity(), StoreOwner, Plugable<Activity
 
     /**
      * Adds plugin to activity.
-     * @param plugin plugin to add. Must be instance of SimpleActivityPlugin or BaseActivityPlugin.
-     * @throws IllegalStateException when plugin is not instance of SimpleActivityPlugin or BaseActivityPlugin.
+     * @param plugin plugin to add. Must be instance of
+     * [com.damianchodorek.renshi.plugin.activity.base.SimpleActivityPlugin]
+     * or [com.damianchodorek.renshi.plugin.activity.base.BaseActivityPlugin].
+     * @throws IllegalStateException when plugin is not instance of
+     * [com.damianchodorek.renshi.plugin.activity.base.SimpleActivityPlugin]
+     * or [com.damianchodorek.renshi.plugin.activity.base.BaseActivityPlugin].
      */
     override fun plug(plugin: ActivityPlugin): Unit {
         try {

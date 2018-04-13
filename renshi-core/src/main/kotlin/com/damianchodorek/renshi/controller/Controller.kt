@@ -8,6 +8,7 @@ import io.reactivex.disposables.Disposable
  * to store ([com.damianchodorek.renshi.store.Store]). [Controller] should contain pure logic.
  * It should be testable without Robolectric or Espresso. If needed - data requests should be delegated
  * to special Data Access Objects. [Controller] should not depend directly on android or other frameworks.
+ * @author Damian Chodorek
  */
 @Suppress("RedundantUnitReturnType")
 interface Controller {

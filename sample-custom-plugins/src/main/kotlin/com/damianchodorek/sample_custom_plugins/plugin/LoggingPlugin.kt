@@ -10,6 +10,7 @@ import com.damianchodorek.sample_custom_plugins.plugin.base.BaseIntentServicePlu
  * Logs service methods when called.
  * @param service intent service that delegates to this plugin.
  * @param log logging abstraction.
+ * @author Damian Chodorek
  */
 class LoggingPlugin(
         service: ExampleIntentService,

@@ -1,11 +1,11 @@
 package com.damianchodorek.sample_simple_app_without_plugins.controller
 
 import com.damianchodorek.renshi.store.Store
-import com.damianchodorek.renshiredux.utils.RxTestRule
 import com.damianchodorek.sample_simple_app_without_plugins.action.FinishingApiCallAction
 import com.damianchodorek.sample_simple_app_without_plugins.action.MakingApiCallAction
 import com.damianchodorek.sample_simple_app_without_plugins.controller.interactor.MakeApiCallInteractorImpl
 import com.damianchodorek.sample_simple_app_without_plugins.store.MainActivityStore
+import com.damianchodorek.sample_simple_app_without_plugins.utils.RxTestRule
 import com.damianchodorek.sample_simple_app_without_plugins.view.MakeApiCallFragment
 import com.nhaarman.mockito_kotlin.*
 import io.reactivex.Completable
@@ -16,6 +16,9 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class MakeApiCallControllerImplTest {
 
     @Suppress("unused")

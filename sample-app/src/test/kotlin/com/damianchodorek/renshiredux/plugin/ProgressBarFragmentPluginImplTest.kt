@@ -20,6 +20,9 @@ import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class ProgressBarFragmentPluginImplTest {
 
     private val viewGroupMock = mock<ViewGroup>()

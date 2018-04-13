@@ -2,6 +2,9 @@ package com.damianchodorek.renshi.utils.integrationImpl
 
 import com.damianchodorek.renshi.controller.base.BaseController
 
+/**
+ * @author Damian Chodorek
+ */
 internal class ControllerTestImpl : BaseController<ActivityPluginImpl, StateTestImpl>() {
 
     var attached = false

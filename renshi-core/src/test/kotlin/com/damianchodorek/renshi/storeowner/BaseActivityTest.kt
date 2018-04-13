@@ -8,6 +8,9 @@ import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.verify
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class BaseActivityTest {
 
     private val activity = spy(TestActivity())

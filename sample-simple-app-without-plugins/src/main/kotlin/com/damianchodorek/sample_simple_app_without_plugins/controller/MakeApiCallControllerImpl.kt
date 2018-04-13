@@ -14,6 +14,7 @@ import io.reactivex.subjects.PublishSubject
  * and starts api call.
  * @param interactor makes fakt api call.
  * @param log error logger.
+ * @author Damian Chodorek
  */
 class MakeApiCallControllerImpl(
         private val interactor: MakeApiCallInteractorImpl = MakeApiCallInteractorImpl(),

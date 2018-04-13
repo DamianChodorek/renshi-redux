@@ -4,6 +4,9 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class LoggingPluginTest {
 
     private val logMock = mock<(String) -> Unit>()

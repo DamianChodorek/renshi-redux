@@ -1,9 +1,9 @@
 package com.damianchodorek.sample_simple_app_without_plugins.presenter
 
 import com.damianchodorek.renshi.store.Store
-import com.damianchodorek.renshiredux.utils.RxTestRule
 import com.damianchodorek.sample_simple_app_without_plugins.store.MainActivityStore
 import com.damianchodorek.sample_simple_app_without_plugins.store.state.MainActivityState
+import com.damianchodorek.sample_simple_app_without_plugins.utils.RxTestRule
 import com.damianchodorek.sample_simple_app_without_plugins.view.ProggresFragment
 import com.nhaarman.mockito_kotlin.*
 import io.reactivex.Completable
@@ -14,6 +14,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class ProgressBarPresenterImplTest {
 
     @Suppress("unused")

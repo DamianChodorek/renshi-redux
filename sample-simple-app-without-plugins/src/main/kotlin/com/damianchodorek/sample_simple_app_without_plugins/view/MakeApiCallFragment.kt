@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_make_api_call.view.*
 
 /**
  * Responsible for button that is used to make fake api call.
+ * @author Damian Chodorek
  */
 class MakeApiCallFragment : Fragment(), ControllerOwner {
 

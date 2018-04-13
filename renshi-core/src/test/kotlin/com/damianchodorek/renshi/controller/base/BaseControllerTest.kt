@@ -10,6 +10,9 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertThat
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class BaseControllerTest {
 
     private val controller = TestController()

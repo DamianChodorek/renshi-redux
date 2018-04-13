@@ -6,6 +6,7 @@ package com.damianchodorek.renshi.store.state
  *
  * It's very important to structure your state properly. Read more at:
  * https://redux.js.org/recipes/structuring-reducers/normalizing-state-shape
+ * @author Damian Chodorek
  */
 interface State {
 

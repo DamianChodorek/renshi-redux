@@ -12,6 +12,9 @@ import org.hamcrest.MatcherAssert
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class BaseStoreTest {
 
     @Suppress("unused")

@@ -8,6 +8,9 @@ import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.verify
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class BaseFragmentTest {
 
     private val fragment = spy(TestFragment())

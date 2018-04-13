@@ -2,6 +2,7 @@ package com.damianchodorek.renshi.plugin
 
 /**
  * Base interface for plugin delegates.
+ * @author Damian Chodorek
  */
 @Suppress("RedundantUnitReturnType")
 interface PluginDelegate {

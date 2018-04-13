@@ -12,6 +12,7 @@ import com.damianchodorek.sample_simple_app_without_plugins.store.state.MainActi
  * Store is the glue of all architectural components. It's shared between controllers and presenters
  * so they can communicate without knowing about each other. This way you can develop parts od your app
  * independently.
+ * @author Damian Chodorek
  */
 class MainActivityStore : BaseStore<MainActivityState>() {
 

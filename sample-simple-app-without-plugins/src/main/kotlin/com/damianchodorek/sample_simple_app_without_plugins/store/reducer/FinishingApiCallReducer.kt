@@ -8,6 +8,7 @@ import io.reactivex.Single
 /**
  * Changes state when api call is finished.
  * Reducer may be split into slice reducers as in [MakingApiCallReducer].
+ * @author Damian Chodorek
  */
 class FinishingApiCallReducer : Reducer<FinishingApiCallAction, MainActivityState> {
 

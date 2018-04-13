@@ -14,6 +14,10 @@ import com.damianchodorek.renshiredux.presenter.MakeApiCallBtnPresenterImpl
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_make_api_call.view.*
 
+/**
+ * Starts API call after button click.
+ * @author Damian Chodorek
+ */
 class MakeApiCallBtnFragmentPluginImpl(
         fragment: BaseFragment //it can be any fragment that inherits from BaseFragment
 ) : BaseFragmentPlugin(fragment), MakeApiCallBtnFragmentPlugin {

@@ -9,11 +9,14 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import com.pascalwelsch.compositeandroid.fragment.FragmentDelegate
-import org.hamcrest.CoreMatchers
-import org.hamcrest.MatcherAssert
+import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import org.mockito.InjectMocks
 
+/**
+ * @author Damian Chodorek
+ */
 class BaseDialogFragmentPluginTest : BasePluginTest() {
 
     private val activitytMock = mock<BaseActivity>()
@@ -41,7 +44,7 @@ class BaseDialogFragmentPluginTest : BasePluginTest() {
 
         delegate.onStart()
 
-        MatcherAssert.assertThat(builderCaptor.storeProvider.firstValue(), CoreMatchers.equalTo(storeMock))
+        assertThat(builderCaptor.storeProvider.firstValue(), equalTo(storeMock))
     }
 
     @Test
@@ -51,25 +54,25 @@ class BaseDialogFragmentPluginTest : BasePluginTest() {
 
         delegate.onStart()
 
-        MatcherAssert.assertThat(builderCaptor.cache.firstValue(), CoreMatchers.equalTo(cacheMock))
+        assertThat(builderCaptor.cache.firstValue(), equalTo(cacheMock))
     }
 
     @Test
     fun onStart_createsDelegateUsingProperControllerProvider() {
         delegate.onStart()
-        MatcherAssert.assertThat(builderCaptor.controllerProvider.firstValue(), CoreMatchers.equalTo(controllerMock))
+        assertThat(builderCaptor.controllerProvider.firstValue(), equalTo(controllerMock))
     }
 
     @Test
     fun onStart_createsDelegateUsingProperPluginProvider() {
         delegate.onStart()
-        MatcherAssert.assertThat(builderCaptor.pluginProvider.firstValue(), CoreMatchers.equalTo(plugin as Any))
+        assertThat(builderCaptor.pluginProvider.firstValue(), equalTo(plugin as Any))
     }
 
     @Test
     fun onStart_createsDelegateUsingProperPluginNameProvider() {
         delegate.onStart()
-        MatcherAssert.assertThat(builderCaptor.pluginNameProvider.firstValue(), CoreMatchers.equalTo(plugin::class.java.name))
+        assertThat(builderCaptor.pluginNameProvider.firstValue(), equalTo(plugin::class.java.name))
     }
 
     @Test

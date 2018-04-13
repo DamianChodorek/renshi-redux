@@ -8,6 +8,7 @@ import kotlin.properties.Delegates
 /**
  * Base implementation of [StateContainer].
  * @param STATE the type of state.
+ * @author Damian Chodorek
  */
 class BaseStateContainer<STATE : State>(
         initialState: STATE

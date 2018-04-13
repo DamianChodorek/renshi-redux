@@ -9,6 +9,7 @@ import io.reactivex.Observable
 /**
  * Top level contract that describes architectural components of [com.damianchodorek.renshiredux.view.MainActivity]
  * and its fragments. For separate and reusable views or activities you should probably define separate contracts.
+ * @author Damian Chodorek
  */
 @Suppress("unused")
 interface Contract {

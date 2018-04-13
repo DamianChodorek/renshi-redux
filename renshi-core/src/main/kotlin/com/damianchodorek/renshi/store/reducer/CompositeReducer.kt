@@ -8,6 +8,7 @@ import kotlin.reflect.KClass
  * Enables to use group of independent reducers as one reducer. You should use this class to
  * split top level reducer to subreducers. Read more at: https://redux.js.org/recipes/structuring-reducers/splitting-reducer-logic
  * @param STATE the type of state that reducer should operate on.
+ * @author Damian Chodorek
  */
 @Suppress("UNCHECKED_CAST")
 open class CompositeReducer<STATE> : Reducer<Action, STATE> {

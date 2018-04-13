@@ -5,6 +5,7 @@ import io.reactivex.Flowable
 /**
  * Container of [State].
  * @param STATE the type of state.
+ * @author Damian Chodorek
  */
 interface StateContainer<STATE : State> {
 

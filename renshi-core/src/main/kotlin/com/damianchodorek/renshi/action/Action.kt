@@ -4,6 +4,7 @@ package com.damianchodorek.renshi.action
  * Actions are payloads of information that are used to send data from controllers to store.
  * You send them using [com.damianchodorek.renshi.store.Store.dispatch] method.
  * Read more at: https://redux.js.org/basics/actions
+ * @author Damian Chodorek
  */
 interface Action {
 

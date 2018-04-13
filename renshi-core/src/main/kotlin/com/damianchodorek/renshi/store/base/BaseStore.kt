@@ -13,6 +13,7 @@ import io.reactivex.Flowable
 /**
  * Base implementation of [Store].
  * @param STATE the subtype of [State] that store holds.
+ * @author Damian Chodorek
  */
 abstract class BaseStore<STATE : State> : Store<STATE> {
 

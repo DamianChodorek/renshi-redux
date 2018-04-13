@@ -12,6 +12,9 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 internal class BaseActivityPluginIntegrationTest : BaseActivityPluginBaseIntegrationTest() {
 
     @Before

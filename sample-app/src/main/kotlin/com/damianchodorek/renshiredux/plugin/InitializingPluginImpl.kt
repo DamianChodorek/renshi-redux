@@ -8,6 +8,7 @@ import com.damianchodorek.renshiredux.R
 
 /**
  * Initializes [com.damianchodorek.renshiredux.view.MainActivity].
+ * @author Damian Chodorek
  */
 class InitializingPluginImpl(
         acivity: BaseActivity // it can be any activity that inherits from BaseActivity

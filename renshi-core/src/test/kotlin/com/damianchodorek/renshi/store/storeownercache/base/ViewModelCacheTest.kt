@@ -12,6 +12,9 @@ import org.hamcrest.Matchers
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class ViewModelCacheTest {
 
     class Plugin1 : SimpleActivityPlugin(mock())

@@ -13,6 +13,9 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
+/**
+ * @author Damian Chodorek
+ */
 class PluginDelegateImplTest {
 
     private val captors = InitializerCaptors()

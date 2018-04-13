@@ -6,6 +6,9 @@ import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class BaseStateContainerTest {
 
     private val initialValue = mock<State>()

@@ -7,6 +7,9 @@ import com.nhaarman.mockito_kotlin.verify
 import com.pascalwelsch.compositeandroid.activity.ActivityDelegate
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class InitializingPluginImplTest {
 
     private val activityMock = mock<MainActivity>()

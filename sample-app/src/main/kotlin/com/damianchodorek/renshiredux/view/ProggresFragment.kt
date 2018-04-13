@@ -7,6 +7,7 @@ import com.damianchodorek.renshiredux.plugin.ProgressBarFragmentPluginImpl
 
 /**
  * Responsible for progress bar.
+ * @author Damian Chodorek
  */
 class ProggresFragment : BaseFragment() {
 

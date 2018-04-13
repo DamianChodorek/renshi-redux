@@ -12,6 +12,9 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Before
 import org.mockito.MockitoAnnotations
 
+/**
+ * @author Damian Chodorek
+ */
 abstract class BasePluginTest {
 
     protected val builderCaptor = PluginDelegateBuilderCaptors()

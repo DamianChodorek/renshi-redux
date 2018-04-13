@@ -8,6 +8,7 @@ import io.reactivex.Single
 /**
  * Changes state when api call is started. It uses slice reducers to outsource logic of changing
  * proper state parts. It is overkill to do it here, but it is for education purposes.
+ * @author Damian Chodorek
  */
 class MakingApiCallReducer : Reducer<MakingApiCallAction, MainActivityState> {
 

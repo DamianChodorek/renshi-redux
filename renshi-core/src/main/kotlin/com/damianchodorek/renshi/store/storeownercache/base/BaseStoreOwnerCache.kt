@@ -6,6 +6,7 @@ import com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache
 
 /**
  * Base implementation of [StoreOwnerCache] that uses LinkedHashMap as cache.
+ * @author Damian Chodorek
  */
 class BaseStoreOwnerCache : StoreOwnerCache {
 

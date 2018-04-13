@@ -6,6 +6,9 @@ import org.junit.Rule
 import org.junit.Test
 import java.util.concurrent.TimeUnit
 
+/**
+ * @author Damian Chodorek
+ */
 class MakeApiCallInteractorImplTest {
 
     @Suppress("unused")

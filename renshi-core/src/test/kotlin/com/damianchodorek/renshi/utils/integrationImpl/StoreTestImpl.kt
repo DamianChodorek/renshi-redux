@@ -7,6 +7,9 @@ import com.damianchodorek.renshi.store.reducer.Reducer
 import io.reactivex.Single
 import kotlin.reflect.KClass
 
+/**
+ * @author Damian Chodorek
+ */
 internal class StoreTestImpl : BaseStore<StateTestImpl>() {
 
     override val initialState = StateTestImpl()

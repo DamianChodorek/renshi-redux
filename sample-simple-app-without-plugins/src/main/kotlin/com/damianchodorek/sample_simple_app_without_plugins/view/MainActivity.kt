@@ -10,6 +10,7 @@ import com.damianchodorek.sample_simple_app_without_plugins.store.MainActivitySt
  *
  * This is NOT recommended way of using Renshi because you may end up with a lot of code in your
  * activities or fragments that won't scale.
+ * @author Damian Chodorek
  */
 class MainActivity : AppCompatActivity() {
 

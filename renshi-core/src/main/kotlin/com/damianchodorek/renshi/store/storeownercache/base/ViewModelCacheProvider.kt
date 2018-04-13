@@ -7,6 +7,7 @@ import com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache
 
 /**
  * Provider of [ViewModelCache].
+ * @author Damian Chodorek
  */
 class ViewModelCacheProvider {
 

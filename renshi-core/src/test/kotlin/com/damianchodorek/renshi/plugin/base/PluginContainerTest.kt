@@ -5,6 +5,9 @@ import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class PluginContainerTest {
 
     private val container = object : PluginContainer<Any>() {

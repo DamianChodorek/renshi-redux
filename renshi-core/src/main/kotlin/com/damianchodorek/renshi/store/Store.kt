@@ -13,6 +13,7 @@ import io.reactivex.Flowable
  * - Emits state changes;
  * Read more at: https://redux.js.org/basics/store
  * @param STATE subclass of [State] that is stored in store.
+ * @author Damian Chodorek
  */
 interface Store<STATE : State> {
 

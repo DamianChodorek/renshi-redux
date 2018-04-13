@@ -5,6 +5,7 @@ import com.damianchodorek.renshi.store.Store
 /**
  * Helper class used by [com.damianchodorek.renshi.plugin.base.PluginDelegateImpl] to
  * initialize controllers.
+ * @author Damian Chodorek
  */
 internal class ControllerInitializer {
 

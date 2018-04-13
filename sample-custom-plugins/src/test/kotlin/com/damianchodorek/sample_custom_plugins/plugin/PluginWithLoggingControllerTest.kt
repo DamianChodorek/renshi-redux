@@ -6,6 +6,9 @@ import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class PluginWithLoggingControllerTest {
 
     private val plugin = PluginWithLoggingController(mock())

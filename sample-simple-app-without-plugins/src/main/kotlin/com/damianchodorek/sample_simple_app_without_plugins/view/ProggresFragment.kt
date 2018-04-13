@@ -14,6 +14,7 @@ import com.damianchodorek.sample_simple_app_without_plugins.presenter.ProgressBa
 
 /**
  * Responsible for progress bar.
+ * @author Damian Chodorek
  */
 class ProggresFragment : Fragment(), ControllerOwner {
 

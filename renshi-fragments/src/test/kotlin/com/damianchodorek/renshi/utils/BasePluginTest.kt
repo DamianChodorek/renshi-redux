@@ -13,11 +13,13 @@ import org.junit.Before
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
+/**
+ * @author Damian Chodorek
+ */
 abstract class BasePluginTest {
 
     protected val builderCaptor = PluginDelegateBuilderCaptors()
-    @Mock
-    protected lateinit var viewModelCacheProviderMock: ViewModelCacheProvider
+    @Mock protected lateinit var viewModelCacheProviderMock: ViewModelCacheProvider
     protected val pluginDelegateBuilderMock = mock<PluginDelegateBuilder>()
     protected val pluginDelegaterMock = mock<PluginDelegate>()
     protected val controllerMock = mock<Controller>()
@@ -42,6 +44,9 @@ abstract class BasePluginTest {
     }
 }
 
+/**
+ * @author Damian Chodorek
+ */
 class PluginDelegateBuilderCaptors {
 
     val storeProvider = argumentCaptor<() -> Store<*>>()

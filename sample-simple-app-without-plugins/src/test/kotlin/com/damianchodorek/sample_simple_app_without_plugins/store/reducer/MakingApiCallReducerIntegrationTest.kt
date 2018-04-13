@@ -1,13 +1,16 @@
 package com.damianchodorek.sample_simple_app_without_plugins.store.reducer
 
-import com.damianchodorek.renshiredux.utils.RxTestRule
 import com.damianchodorek.sample_simple_app_without_plugins.action.MakingApiCallAction
 import com.damianchodorek.sample_simple_app_without_plugins.store.MainActivityStore
+import com.damianchodorek.sample_simple_app_without_plugins.utils.RxTestRule
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class MakingApiCallReducerIntegrationTest {
 
     @Suppress("unused")

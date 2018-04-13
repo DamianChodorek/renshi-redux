@@ -5,6 +5,9 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Assert.assertNull
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class BaseActionTest {
 
     @Test

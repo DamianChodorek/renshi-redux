@@ -10,6 +10,7 @@ import com.damianchodorek.sample_custom_plugins.ExampleIntentService
  * If for some reason you can't extend Renshi base plugins
  * (for example: [com.damianchodorek.renshi.plugin.activity.base.BaseActivityPlugin]),
  * you can create plugins yourself by using [com.damianchodorek.renshi.plugin.PluginDelegate].
+ * @author Damian Chodorek
  */
 abstract class BaseIntentServicePlugin(
         service: ExampleIntentService

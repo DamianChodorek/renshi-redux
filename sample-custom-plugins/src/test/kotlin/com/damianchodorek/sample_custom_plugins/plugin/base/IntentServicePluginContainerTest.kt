@@ -6,6 +6,9 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyZeroInteractions
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class IntentServicePluginContainerTest {
 
     private val plugins = listOf<IntentServicePlugin>(mock(), mock())

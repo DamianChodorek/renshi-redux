@@ -7,6 +7,7 @@ import com.damianchodorek.renshi.store.storeownercache.StoreOwnerCache
 /**
  * Implementation of [StoreOwnerCache] that uses [android.arch.lifecycle.ViewModel]
  * from Android Arch Components. It survives orientation chages.
+ * @author Damian Chodorek
  */
 internal class ViewModelCache(
         internal val baseStoreOwnerCache: BaseStoreOwnerCache = BaseStoreOwnerCache()

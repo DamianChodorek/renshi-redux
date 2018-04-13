@@ -14,6 +14,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * @author Damian Chodorek
+ */
 class ProgressBarPresenterImplTest {
 
     @Suppress("unused")

@@ -4,6 +4,7 @@ import com.damianchodorek.renshi.action.Action
 
 /**
  * Default implementation of [Action]. Your actions should inherit from this class  to reduce boilerplate.
+ * @author Damian Chodorek
  */
 abstract class BaseAction : Action {
 

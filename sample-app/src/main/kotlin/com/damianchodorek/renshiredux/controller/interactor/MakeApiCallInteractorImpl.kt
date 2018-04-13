@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit
 
 /**
  * Makes fake api call.
+ * @author Damian Chodorek
  */
 class MakeApiCallInteractorImpl(
         private val scheduler: Scheduler = Schedulers.computation()
