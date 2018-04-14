@@ -6,6 +6,7 @@ import com.damianchodorek.renshi.store.state.State
 import com.damianchodorek.renshi.store.state.StateContainer
 import io.reactivex.Completable
 import io.reactivex.Scheduler
+import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers.from
 import java.util.concurrent.Executors.newSingleThreadExecutor
 
@@ -61,18 +62,20 @@ interface Dispatcher<in ACTION : Action> {
 
                     private val scheduler = schedulerProvider()
 
-                    override fun dispatch(action: ACTION) =
-                            reducer
-                                    .reduce(action, stateContainer.state)
-                                    .map { it.clone(lastActionMark = action.actionMark) }
-                                    .doOnSuccess { stateContainer.state = it as STATE }
-                                    .filter { action.singleTime }
-                                    .flatMapCompletable {
-                                        Completable.fromAction {
-                                            stateContainer.state = stateContainer.state.clone(lastActionMark = null) as STATE
+                    override fun dispatch(action: ACTION) = Single
+                            .just(action)
+                            .flatMapCompletable { itAction ->
+                                reducer
+                                        .reduce(itAction, stateContainer.state)
+                                        .map { it.clone(lastActionMark = itAction.actionMark) }
+                                        .doOnSuccess { stateContainer.state = it as STATE }
+                                        .filter { itAction.singleTime }
+                                        .flatMapCompletable {
+                                            Completable.fromAction {
+                                                stateContainer.state = stateContainer.state.clone(lastActionMark = null) as STATE
+                                            }
                                         }
-                                    }
-                                    .subscribeOn(scheduler)
+                            }.subscribeOn(scheduler)
 
                 }
     }

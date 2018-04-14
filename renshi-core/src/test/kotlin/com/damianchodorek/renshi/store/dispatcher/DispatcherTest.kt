@@ -5,10 +5,7 @@ import com.damianchodorek.renshi.store.base.BaseStore
 import com.damianchodorek.renshi.store.reducer.Reducer
 import com.damianchodorek.renshi.store.state.State
 import com.damianchodorek.renshi.utils.RxTestRule
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.mock
-import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockito_kotlin.*
 import io.reactivex.Flowable
 import io.reactivex.Single
 import junit.framework.Assert.assertNull
@@ -41,11 +38,7 @@ class DispatcherTest {
 
     @Before
     fun setUp() {
-        prepareReducerToEmitState(testState)
-    }
-
-    private fun prepareReducerToEmitState(state: TestState) {
-        whenever(reducer.reduce(any(), any())).thenReturn(Single.just(state))
+        whenever(reducer.reduce(any(), any())).thenReturn(Single.just(testState))
     }
 
     @Test
@@ -72,20 +65,19 @@ class DispatcherTest {
     @Test
     fun dispatch_updatesLastActionRenderMark() {
         val renderMarkMock = mock<Any>()
-        prepareActionToReturnRenderMark(renderMarkMock)
+        actionMock.returnRenderMark(renderMarkMock)
 
         store.dispatch(actionMock).test()
 
         assertThat(store.state.lastActionMark!!, equalTo(renderMarkMock))
     }
 
-    private fun prepareActionToReturnRenderMark(renderMar: Any) {
-        whenever(actionMock.actionMark).thenReturn(renderMar)
+    private fun Action.returnRenderMark(renderMark: Any) {
+        whenever(this.actionMark).thenReturn(renderMark)
     }
 
     @Test
     fun dispatch_resetsLastActionRenderMark() {
-        prepareActionToReturnRenderMark(mock())
         store.dispatch(actionMock).test()
 
         whenever(actionMock.actionMark).thenReturn(null)
@@ -96,21 +88,23 @@ class DispatcherTest {
 
     @Test
     fun dispatch_updatesState() {
-        val renderMarkMock = mock<Any>()
-        prepareActionToReturnRenderMark(renderMarkMock)
-        val stateMock = TestState(lastActionMark = renderMarkMock)
-        prepareReducerToEmitState(stateMock)
+        val stateMock = actionMock.prepareToBeDispatchedWithRenderMark()
 
-        val store = createTestStore()
         store.dispatch(actionMock).test()
 
         assertThat(store.state, equalTo(stateMock))
     }
 
+    private fun Action.prepareToBeDispatchedWithRenderMark(): TestState {
+        val renderMarkMock = mock<Any>()
+        this.returnRenderMark(renderMarkMock)
+        return TestState(lastActionMark = renderMarkMock)
+    }
+
     @Test
     fun dispatch_resetsRenderMark_whenActionIsSingleTime() {
         val renderMarkMock = mock<Any>()
-        prepareActionToReturnRenderMark(renderMarkMock)
+        actionMock.returnRenderMark(renderMarkMock)
         prepareActionToBeSingleTime()
 
         val testSubscriber = store.stateChanges.test()
@@ -129,15 +123,32 @@ class DispatcherTest {
             }.toList()
 
     @Test
+    fun dispatch_usesUpdatedState_whenDispatchedAfterStateChange() {
+        val firstState = actionMock.prepareToBeDispatchedWithRenderMark()
+        val secondActionMock = mock<Action>()
+        secondActionMock.prepareToBeDispatchedWithRenderMark()
+
+        store
+                .dispatch(actionMock)
+                .andThen(store.dispatch(secondActionMock))
+                .test()
+
+        inOrder(reducer).apply {
+            verify(reducer).reduce(actionMock, testState)
+            verify(reducer).reduce(secondActionMock, firstState)
+        }
+    }
+
+    @Test
     fun dispatch_dispatchesEventsInProperOrder() {
         Dispatcher.resetSchedulerProvider()
         val (actions, expectedTestStates) = createTestData()
-        val newStore = createTestStore()
-        val testSubscriber = newStore.stateChanges.test()
+        val testStore = createTestStore()
+        val testSubscriber = testStore.stateChanges.test()
 
         Flowable
                 .fromIterable(actions)
-                .flatMapCompletable { newStore.dispatch(it) }
+                .flatMapCompletable { testStore.dispatch(it) }
                 .blockingAwait()
 
         testSubscriber.assertValueSequence(expectedTestStates)
