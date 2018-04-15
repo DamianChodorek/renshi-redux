@@ -32,6 +32,8 @@ Simplified data flow looks like this:
 - Store emits new state.
 - Controllers/presenters receive new state and perform further logic, for example update view by calls to plugin.
 
+Note that Renshi doesn't have [redux middleware mechanism](https://redux.js.org/advanced/middleware). Controllers are kind of middleware but not really. I consider adding middleware in the future releases.
+
 #### The code
 
 Android components extend Renshi base classes so you can add plugins to them. I recommend to share one store in one context, so for example fragments should use theirs Activity store. Currently Renshi supports base classes for: Activity, Fragment, DialogFragment.
