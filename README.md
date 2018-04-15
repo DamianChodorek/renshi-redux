@@ -23,6 +23,17 @@ To learn more about advantages of redux visit [official redux website](https://r
 
 Below description shows full capabilities of Renshi, but you don't have to use it that way. You can only use redux components and forget about plugins or controllers. Let's begin.
 
+Simplified data flow looks like this:
+
+- Activity/Fragment calls plugin.
+- Plugin emits events to controllers.
+- Controller dispatches actions to store.
+- Store calls reducers to create new state.
+- Store emits new state.
+- Controllers/presenters receive new state and perform further logic, for example update view by calls to plugin.
+
+#### The code
+
 Android components extend Renshi base classes so you can add plugins to them. I recommend to share one store in one context, so for example fragments should use theirs Activity store. Currently Renshi supports base classes for: Activity, Fragment, DialogFragment.
 ```kotlin
 class MakeApiCallFragment : BaseFragment() {
@@ -117,7 +128,7 @@ class MakingApiCallReducer : Reducer<MakingApiCallAction, MainActivityState> {
                     }
 }
 ```
-You listen for new state in presenters and render it. Controllers and presenters inherit from the same class - `BaseController` but have two different responsibilities. Controllers handle plugin events. Presenters translate state changes to plugin calls that modify view.
+You listen for new state in presenters and render it. Controllers and presenters inherit from the same class - `BaseController` but have two different responsibilities. Both handle plugin and state events, but only presenters should modify view by calling theirs plugin.
 ```kotlin
 class MakeApiCallBtnPresenterImpl 
 : BaseController<MakeApiCallBtnFragmentPlugin, MainActivityState>(), MakeApiCallBtnPresenter {
