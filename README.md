@@ -13,11 +13,11 @@ To learn more about advantages of redux visit [official redux website](https://r
 
 ## Project modules
 
-- `renshi-core` - contains all basic interfaces and redux components.
+- `renshi-core` - contains basic interfaces, redux components, plugins and base class for `Activity`.
 - `renshi-fragments` - contains plugins and base classes for `Fragment` and `DialogFragment`.
 - `sample-app` - example app that shows how to use Renshi in most efficient and recommended way (along with tests). It shows how to use redux to communicate two fragments with each other.
 - `sample-simple-app-without-plugins` - simple example that shows how to use pure redux to communicate two fragments with each other. This is NOT recommended way of using Renshi because without plugins you may end up with a lot of code in your activities or fragments that won't scale.
-- `sample-custom-plugins` - this example shows how to make your own plugins and plug them into any class that you need. If for some reason you can't extend Renshi base store owners (for example: BaseActivity), you can create your own store owner and delegate it's methods to plugins.
+- `sample-custom-plugins` - this example shows how to make your own plugins and plug them into any class that you need. If for some reason you can't extend Renshi base store owners (for example: `BaseActivity`), you can easily create your own store owner and delegate it's methods to plugins.
 
 ## How it works?
 
@@ -25,9 +25,9 @@ Below description shows full capabilities of Renshi, but you don't have to use i
 
 Simplified data flow looks like this:
 
-- Activity/Fragment calls plugin.
-- Plugin emits events to controllers.
-- Controller dispatches actions to store.
+- `Activity` or `Fragment` calls plugins.
+- Plugins emit events to controllers.
+- Controllers dispatch actions to shared store.
 - Store calls reducers to create new state.
 - Store emits new state.
 - Controllers/presenters receive new state and perform further logic, for example update view by calls to plugin.
@@ -36,7 +36,7 @@ Note that Renshi doesn't have [redux middleware mechanism](https://redux.js.org/
 
 #### The code
 
-Android components extend Renshi base classes so you can add plugins to them. I recommend to share one store in one context, so for example fragments should use theirs Activity store. Currently Renshi supports base classes for: Activity, Fragment, DialogFragment.
+Android components extend Renshi base classes so you can add plugins to them. I recommend to share one store per context, so for example fragments should use theirs `Activity` store. Currently Renshi supports base classes for: `Activity`, `Fragment`, `DialogFragment`.
 ```kotlin
 class MakeApiCallFragment : BaseFragment() {
 
@@ -49,7 +49,7 @@ class MakeApiCallFragment : BaseFragment() {
     }
 }
 ```
-All Fragment (or Activity) specfic code goes to plugins. Even creating view in `onCreateView()`. Note that plugin is passive. It doesn't call controllers/presenters directly but emit events by using `PublishSubject`. In this example one plugin creates controller and presenter, but you can use separate plugins. One for button clicks (would create controller) and one for hiding/showing button (would create presenter).
+`Fragment` (or `Activity`) specfic code goes to plugins. Even creating view in `onCreateView()`. Note that plugin is passive. It doesn't call controllers/presenters directly but emits events by using `PublishSubject`. In this example one plugin creates a controller and presenter, but you can use separate plugins. One for button clicks (would create controller) and one for hiding/showing button (would create presenter).
 ```kotlin
 class MakeApiCallBtnFragmentPluginImpl(
         fragment: BaseFragment
@@ -84,7 +84,7 @@ class MakeApiCallBtnFragmentPluginImpl(
     )
 }
 ```
-Controllers have two main references. One to `plugin` and one to `store`. To dispatch some action in your controller you just call `store.dispatch()`.
+Controllers survive orientation change and have two main references. One to `plugin` and one to `store`. To dispatch some action in your controller you just call `store.dispatch()`.
 ```kotlin
 class MakeApiCallControllerImpl
 : BaseController<MakeApiCallBtnFragmentPlugin, MainActivityState>(), MakeApiCallBtnController {
