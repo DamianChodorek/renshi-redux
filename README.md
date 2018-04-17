@@ -174,6 +174,7 @@ Plugin mechanism is build on top of [CompositeAndroid](https://github.com/passsy
 
 Great thanks to my friends for reviewing the library. Especially:
 
+- Michał Hawryszko
 - Łukasz Wojtach
 
 
